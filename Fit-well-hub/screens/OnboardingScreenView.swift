@@ -7,70 +7,55 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct OnboardingScreenView: View {
     var body: some View {
-        
-        VStack() {
-            Text("FitWellHub")
-                .font(.system(size: 24, weight: .semibold))
-                .padding(.top, 118)
-            
+        NavigationStack() {
+            Label()
             Spacer()
-            
-            VStack{
-                Button{
-                    
-                } label: {
-                    Text("Войти")
-                        .font(.system(size: 16))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 54)
-                        .cornerRadius(6)
-                        .foregroundColor(Color("black"))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 6)
-                                .stroke(Color("black"), lineWidth: 1)
-                        )
+            VStack {
+                NavigationLink(destination: AuthorizationScreenView()) {
+                    SecondaryButton(title: "Войти")
                 }
-                
                 Spacer().frame(height: 16)
-                
-                
-                Button{
-                    
-                } label: {
-                    Text("Регистрация")
-                        .font(.system(size: 16))
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 54)
-                        .foregroundColor(.white)
-                        .background(Color("black"))
-                        .cornerRadius(6)
+                NavigationLink(destination: RegistrationScreenView()) {
+                    PrimaryButton(title: "Регистрация")
                 }
-                
                 Spacer().frame(height: 16)
-                
-                Text("Регистрируясь, я принимаю")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 12))
-                    .foregroundColor(Color("black"))
-                
+                Footer()
+            }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 32)
+        }
+    }
+}
+
+struct Label: View {
+    var body: some View {
+        Text("FitWellHub")
+            .font(.system(size: 24, weight: .semibold))
+            .padding(.top, 118)
+    }
+}
+
+
+struct Footer: View {
+    var body: some View {
+        VStack{
+            Text("Регистрируясь, я принимаю")
+                .multilineTextAlignment(.center)
+                .font(.system(size: 12))
+                .foregroundColor(Color("black"))
+            NavigationLink(destination: PrivacyPolicyScreenView()) {
                 Text("Политику конфиденциальности")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 12))
                     .foregroundColor(Color("black"))
                     .underline()
-                    .onTapGesture {
-                        print("press")
-                    }
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 32)
-            
         }
     }
 }
 
 #Preview {
-    ContentView()
+    OnboardingScreenView()
 }
