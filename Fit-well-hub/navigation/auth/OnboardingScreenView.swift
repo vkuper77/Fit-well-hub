@@ -23,8 +23,7 @@ struct OnboardingScreenView: View {
                 Spacer().frame(height: 16)
                 Footer()
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 32)
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 32, trailing: 16))
         }
     }
 }
@@ -44,12 +43,12 @@ struct Footer: View {
             Text("Регистрируясь, я принимаю")
                 .multilineTextAlignment(.center)
                 .font(.system(size: 12))
-                .foregroundColor(Color("black"))
+                .foregroundColor(Color("black-custom"))
             NavigationLink(destination: PrivacyPolicyScreenView()) {
                 Text("Политику конфиденциальности")
                     .multilineTextAlignment(.center)
                     .font(.system(size: 12))
-                    .foregroundColor(Color("black"))
+                    .foregroundColor(Color("black-custom"))
                     .underline()
             }
         }

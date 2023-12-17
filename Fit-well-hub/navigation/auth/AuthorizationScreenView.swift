@@ -26,7 +26,7 @@ struct AuthorizationScreenView: View {
     }
     
     var body: some View {
-        VStack {
+        NavigationStack {
             VStack {
                 Spacer().frame(height: 33)
                 MainInput(value: $login, placeholder: "Email или имя пользователя")
@@ -50,13 +50,14 @@ struct AuthorizationScreenView: View {
             
             if isButtonEnabled {
                 HStack {
-                    Text("Восстановить паролль")
-                        .multilineTextAlignment(.trailing)
-                        .font(.system(size: 16))
-                        .foregroundColor(.black)
-                        .opacity(0.5)
-                        .underline()
-                        .onTapGesture { print("Восстановить паролль") }
+                    NavigationLink(destination: PasswordRecoveryScreenView()) {
+                        Text("Восстановить паролль")
+                            .multilineTextAlignment(.trailing)
+                            .font(.system(size: 16))
+                            .foregroundColor(.black)
+                            .opacity(0.5)
+                            .underline()
+                    }
                     Spacer()
                 }
                 .padding(.leading, 16)

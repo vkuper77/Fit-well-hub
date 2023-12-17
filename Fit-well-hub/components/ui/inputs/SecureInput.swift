@@ -37,7 +37,7 @@ struct SecureInput: View {
                         .stroke(Color("grey"), lineWidth: 1)
                 )
                 .font(.system(size: 16))
-                .foregroundColor(Color("black"))
+                .foregroundColor(Color("black-custom"))
             
             if isShowIcon {
                 Image(systemName: isShowValue ? "eye.slash.fill" : "eye.fill")

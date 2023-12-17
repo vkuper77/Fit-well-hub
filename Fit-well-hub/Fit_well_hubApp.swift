@@ -11,7 +11,7 @@ import SwiftUI
 struct Fit_well_hubApp: App {
     var body: some Scene {
         WindowGroup {
-            OnboardingScreenView()
+            RootView()
         }
     }
 }

@@ -15,13 +15,15 @@ struct MainInput: View {
     var body: some View {
         ZStack(alignment: .trailing) {
             TextField(placeholder, text: $value)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
                 .padding(EdgeInsets(top: 18, leading: 16, bottom: 18, trailing: 16))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color("grey"), lineWidth: 1)
                 )
                 .font(.system(size: 16))
-                .foregroundColor(Color("black"))
+                .foregroundColor(Color("black-custom"))
                 if let maxCount = maxCharacterCount {
                     Text("\(value.count)/\(maxCount)")
                         .foregroundColor(Color("grey-light"))
@@ -29,13 +31,11 @@ struct MainInput: View {
                         .padding(.trailing, 16)
                 }
         }
-        .onChange(of: value) { newValue in
+        .onChange(of: value) {_ , newValue in
             if let maxCount = maxCharacterCount, newValue.count > maxCount {
                 value = String(newValue.prefix(maxCount))
             }
         }
-        .disableAutocorrection(true)
-        .autocapitalization(.none)
         Spacer().frame(height: 0)
     }
 }

@@ -11,6 +11,12 @@
 		F82B77F42B1FA9B6004E249F /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B77F32B1FA9B6004E249F /* OnboardingScreenView.swift */; };
 		F82B77F62B1FA9B7004E249F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F82B77F52B1FA9B7004E249F /* Assets.xcassets */; };
 		F82B77F92B1FA9B7004E249F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F82B77F82B1FA9B7004E249F /* Preview Assets.xcassets */; };
+		F83BAFFD2B2F34CC00EB53C1 /* SecureInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BAFFC2B2F34CC00EB53C1 /* SecureInput.swift */; };
+		F83BB0002B2F682B00EB53C1 /* PasswordRecoveryScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BAFFF2B2F682B00EB53C1 /* PasswordRecoveryScreenView.swift */; };
+		F83BB0032B2F692100EB53C1 /* validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0022B2F692100EB53C1 /* validate.swift */; };
+		F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0042B2F6AA600EB53C1 /* RootView.swift */; };
+		F83BB0082B2F7A2300EB53C1 /* VerificationCodeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0072B2F7A2300EB53C1 /* VerificationCodeScreenView.swift */; };
+		F83BB00A2B2F872E00EB53C1 /* CreatePasswordScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0092B2F872E00EB53C1 /* CreatePasswordScreenView.swift */; };
 		F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FE9FD2B2E06A1005E22F1 /* PrimaryButton.swift */; };
 		F87FEA002B2E06A1005E22F1 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FE9FE2B2E06A1005E22F1 /* SecondaryButton.swift */; };
 		F87FEA242B2E083C005E22F1 /* RegistrationScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA212B2E083C005E22F1 /* RegistrationScreenView.swift */; };
@@ -27,6 +33,12 @@
 		F82B77F32B1FA9B6004E249F /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		F82B77F52B1FA9B7004E249F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F82B77F82B1FA9B7004E249F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F83BAFFC2B2F34CC00EB53C1 /* SecureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInput.swift; sourceTree = "<group>"; };
+		F83BAFFF2B2F682B00EB53C1 /* PasswordRecoveryScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryScreenView.swift; sourceTree = "<group>"; };
+		F83BB0022B2F692100EB53C1 /* validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validate.swift; sourceTree = "<group>"; };
+		F83BB0042B2F6AA600EB53C1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		F83BB0072B2F7A2300EB53C1 /* VerificationCodeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeScreenView.swift; sourceTree = "<group>"; };
+		F83BB0092B2F872E00EB53C1 /* CreatePasswordScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordScreenView.swift; sourceTree = "<group>"; };
 		F87FE9FD2B2E06A1005E22F1 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		F87FE9FE2B2E06A1005E22F1 /* SecondaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		F87FEA212B2E083C005E22F1 /* RegistrationScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationScreenView.swift; sourceTree = "<group>"; };
@@ -67,8 +79,9 @@
 		F82B77F02B1FA9B6004E249F /* Fit-well-hub */ = {
 			isa = PBXGroup;
 			children = (
+				F83BB0012B2F68F500EB53C1 /* helpers */,
 				F884FC352B2DFFE3008697BB /* components */,
-				F87FEA012B2E06B5005E22F1 /* screens */,
+				F87FEA012B2E06B5005E22F1 /* navigation */,
 				F82B77F12B1FA9B6004E249F /* Fit_well_hubApp.swift */,
 				F82B77F52B1FA9B7004E249F /* Assets.xcassets */,
 				F82B77F72B1FA9B7004E249F /* Preview Content */,
@@ -84,15 +97,43 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F87FEA012B2E06B5005E22F1 /* screens */ = {
+		F83BAFFE2B2F5EAA00EB53C1 /* auth */ = {
 			isa = PBXGroup;
 			children = (
 				F87FEA222B2E083C005E22F1 /* AuthorizationScreenView.swift */,
 				F87FEA232B2E083C005E22F1 /* PrivacyPolicyScreenView.swift */,
 				F87FEA212B2E083C005E22F1 /* RegistrationScreenView.swift */,
 				F82B77F32B1FA9B6004E249F /* OnboardingScreenView.swift */,
+				F83BAFFF2B2F682B00EB53C1 /* PasswordRecoveryScreenView.swift */,
+				F83BB0072B2F7A2300EB53C1 /* VerificationCodeScreenView.swift */,
+				F83BB0092B2F872E00EB53C1 /* CreatePasswordScreenView.swift */,
 			);
-			path = screens;
+			path = auth;
+			sourceTree = "<group>";
+		};
+		F83BB0012B2F68F500EB53C1 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F83BB0022B2F692100EB53C1 /* validate.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		F83BB0062B2F6AC500EB53C1 /* main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		F87FEA012B2E06B5005E22F1 /* navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F83BB0062B2F6AC500EB53C1 /* main */,
+				F83BAFFE2B2F5EAA00EB53C1 /* auth */,
+				F83BB0042B2F6AA600EB53C1 /* RootView.swift */,
+			);
+			path = navigation;
 			sourceTree = "<group>";
 		};
 		F884FC352B2DFFE3008697BB /* components */ = {
@@ -127,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				F87FEA332B2E1B63005E22F1 /* MainInput.swift */,
+				F83BAFFC2B2F34CC00EB53C1 /* SecureInput.swift */,
 			);
 			path = inputs;
 			sourceTree = "<group>";
@@ -201,13 +243,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83BB0032B2F692100EB53C1 /* validate.swift in Sources */,
 				F87FEA002B2E06A1005E22F1 /* SecondaryButton.swift in Sources */,
+				F83BAFFD2B2F34CC00EB53C1 /* SecureInput.swift in Sources */,
 				F87FEA342B2E1B63005E22F1 /* MainInput.swift in Sources */,
+				F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */,
 				F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */,
 				F87FEA2F2B2E1ACD005E22F1 /* CrossButton.swift in Sources */,
 				F82B77F42B1FA9B6004E249F /* OnboardingScreenView.swift in Sources */,
+				F83BB0082B2F7A2300EB53C1 /* VerificationCodeScreenView.swift in Sources */,
 				F87FEA242B2E083C005E22F1 /* RegistrationScreenView.swift in Sources */,
 				F87FEA302B2E1ACD005E22F1 /* BackButton.swift in Sources */,
+				F83BB00A2B2F872E00EB53C1 /* CreatePasswordScreenView.swift in Sources */,
+				F83BB0002B2F682B00EB53C1 /* PasswordRecoveryScreenView.swift in Sources */,
 				F87FEA252B2E083C005E22F1 /* AuthorizationScreenView.swift in Sources */,
 				F82B77F22B1FA9B6004E249F /* Fit_well_hubApp.swift in Sources */,
 				F87FEA262B2E083C005E22F1 /* PrivacyPolicyScreenView.swift in Sources */,

@@ -15,7 +15,7 @@ struct PrimaryButton: View {
             .frame(maxWidth: .infinity)
             .frame(height: 54)
             .foregroundColor(.white)
-            .background(Color("black"))
+            .background(Color("black-custom"))
             .cornerRadius(6)
     }
 }

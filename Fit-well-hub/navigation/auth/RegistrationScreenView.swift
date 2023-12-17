@@ -37,7 +37,6 @@ struct RegistrationScreenView: View {
     }
     
     func submit () {
-        print("email:", email)
         
         if !isValidEmail(email) {
             isErrorEmail = true
@@ -92,7 +91,7 @@ struct RegistrationScreenView: View {
                 }.onChange(of: repeatPass) {
                     isErrorPass = false
                 }.onChange(of: pass) {
-                    isShowPass = false
+                    isErrorPass = false
                 }
                 
                 if isErrorPass {

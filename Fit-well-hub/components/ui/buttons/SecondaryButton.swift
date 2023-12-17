@@ -15,10 +15,10 @@ struct SecondaryButton: View {
             .frame(maxWidth: .infinity)
             .frame(height: 54)
             .cornerRadius(6)
-            .foregroundColor(Color("black"))
+            .foregroundColor(Color("black-custom"))
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
-                    .stroke(Color("black"), lineWidth: 1)
+                    .stroke(Color("black-custom"), lineWidth: 1)
             )
     }
 }

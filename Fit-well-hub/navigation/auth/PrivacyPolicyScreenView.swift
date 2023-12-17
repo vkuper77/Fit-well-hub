@@ -11,7 +11,7 @@ struct PrivacyPolicyScreenView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        VStack{
+        NavigationStack {
             Text("PrivacyPolicyScreenView")
             .navigationBarBackButtonHidden(true)
             .navigationBarTitle("EULA", displayMode: .inline)
