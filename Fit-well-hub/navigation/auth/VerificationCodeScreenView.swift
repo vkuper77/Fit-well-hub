@@ -1,29 +1,29 @@
 //
-//  RegistrationScreen.swift
+//  VerificationСodeScreenView.swift
 //  Fit-well-hub
 //
-//  Created by Vitali Kupratsevich on 9.12.23.
+//  Created by Vitali Kupratsevich on 17.12.23.
 //
 
 import SwiftUI
 
-struct RegistrationScreenView: View {
+struct VerificationCodeScreenView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
-        VStack {
-            Text("RegistrationScreen")
+        NavigationStack{
+            Spacer()
             .navigationBarBackButtonHidden(true)
-            .navigationBarTitle("Регистрация", displayMode: .inline)
+            .navigationBarTitle("Код верификации", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     CrossButton { presentationMode.wrappedValue.dismiss() }
                 }
             }
-        }
+        }.padding(.horizontal, 16)
     }
 }
 
 #Preview {
-    RegistrationScreenView()
+    Verification_odeScreenView()
 }

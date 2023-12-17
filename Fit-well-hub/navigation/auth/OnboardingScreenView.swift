@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingScreenView: View {
     var body: some View {
-        NavigationStack() {
+        NavigationStack {
             Label()
             Spacer()
             VStack {
@@ -31,8 +31,8 @@ struct OnboardingScreenView: View {
 
 struct Label: View {
     var body: some View {
-        Text("FitWellHub")
-            .font(.system(size: 24, weight: .semibold))
+        Text("FWH")
+            .font(.system(size: 32, weight: .semibold))
             .padding(.top, 118)
     }
 }

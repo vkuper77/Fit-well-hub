@@ -34,6 +34,8 @@ struct MainInput: View {
                 value = String(newValue.prefix(maxCount))
             }
         }
+        .disableAutocorrection(true)
+        .autocapitalization(.none)
         Spacer().frame(height: 0)
     }
 }
