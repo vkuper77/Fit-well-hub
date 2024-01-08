@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F828EFB12B4AE786000531C0 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828EFB02B4AE786000531C0 /* RoundedShape.swift */; };
 		F82B77F22B1FA9B6004E249F /* Fit_well_hubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B77F12B1FA9B6004E249F /* Fit_well_hubApp.swift */; };
 		F82B77F42B1FA9B6004E249F /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B77F32B1FA9B6004E249F /* OnboardingScreenView.swift */; };
 		F82B77F62B1FA9B7004E249F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F82B77F52B1FA9B7004E249F /* Assets.xcassets */; };
@@ -17,6 +18,10 @@
 		F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0042B2F6AA600EB53C1 /* RootView.swift */; };
 		F83BB0082B2F7A2300EB53C1 /* VerificationCodeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0072B2F7A2300EB53C1 /* VerificationCodeScreenView.swift */; };
 		F83BB00A2B2F872E00EB53C1 /* CreatePasswordScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0092B2F872E00EB53C1 /* CreatePasswordScreenView.swift */; };
+		F87C36BF2B4C14CB00716DCA /* MaskScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C36BE2B4C14CB00716DCA /* MaskScreenView.swift */; };
+		F87C36C42B4C1BFE00716DCA /* MontserratAlternates-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F87C36C32B4C1BFE00716DCA /* MontserratAlternates-Regular.ttf */; };
+		F87C36CD2B4C239F00716DCA /* MontserratAlternates-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F87C36CB2B4C239F00716DCA /* MontserratAlternates-Bold.ttf */; };
+		F87C36CE2B4C239F00716DCA /* MontserratAlternates-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F87C36CC2B4C239F00716DCA /* MontserratAlternates-SemiBold.ttf */; };
 		F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FE9FD2B2E06A1005E22F1 /* PrimaryButton.swift */; };
 		F87FEA002B2E06A1005E22F1 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FE9FE2B2E06A1005E22F1 /* SecondaryButton.swift */; };
 		F87FEA242B2E083C005E22F1 /* RegistrationScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA212B2E083C005E22F1 /* RegistrationScreenView.swift */; };
@@ -28,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F828EFB02B4AE786000531C0 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		F82B77EE2B1FA9B6004E249F /* Fit-well-hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit-well-hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82B77F12B1FA9B6004E249F /* Fit_well_hubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit_well_hubApp.swift; sourceTree = "<group>"; };
 		F82B77F32B1FA9B6004E249F /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
@@ -39,6 +45,11 @@
 		F83BB0042B2F6AA600EB53C1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		F83BB0072B2F7A2300EB53C1 /* VerificationCodeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeScreenView.swift; sourceTree = "<group>"; };
 		F83BB0092B2F872E00EB53C1 /* CreatePasswordScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordScreenView.swift; sourceTree = "<group>"; };
+		F87C36BE2B4C14CB00716DCA /* MaskScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskScreenView.swift; sourceTree = "<group>"; };
+		F87C36C32B4C1BFE00716DCA /* MontserratAlternates-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Regular.ttf"; sourceTree = "<group>"; };
+		F87C36CA2B4C21BF00716DCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F87C36CB2B4C239F00716DCA /* MontserratAlternates-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Bold.ttf"; sourceTree = "<group>"; };
+		F87C36CC2B4C239F00716DCA /* MontserratAlternates-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBold.ttf"; sourceTree = "<group>"; };
 		F87FE9FD2B2E06A1005E22F1 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		F87FE9FE2B2E06A1005E22F1 /* SecondaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		F87FEA212B2E083C005E22F1 /* RegistrationScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationScreenView.swift; sourceTree = "<group>"; };
@@ -79,8 +90,10 @@
 		F82B77F02B1FA9B6004E249F /* Fit-well-hub */ = {
 			isa = PBXGroup;
 			children = (
+				F87C36CA2B4C21BF00716DCA /* Info.plist */,
+				F87C36C02B4C1A9400716DCA /* assets */,
 				F83BB0012B2F68F500EB53C1 /* helpers */,
-				F884FC352B2DFFE3008697BB /* components */,
+				F884FC352B2DFFE3008697BB /* views */,
 				F87FEA012B2E06B5005E22F1 /* navigation */,
 				F82B77F12B1FA9B6004E249F /* Fit_well_hubApp.swift */,
 				F82B77F52B1FA9B7004E249F /* Assets.xcassets */,
@@ -115,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				F83BB0022B2F692100EB53C1 /* validate.swift */,
+				F828EFB02B4AE786000531C0 /* RoundedShape.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -124,6 +138,40 @@
 			children = (
 			);
 			path = main;
+			sourceTree = "<group>";
+		};
+		F87C36BD2B4C149500716DCA /* masks */ = {
+			isa = PBXGroup;
+			children = (
+				F87C36BE2B4C14CB00716DCA /* MaskScreenView.swift */,
+			);
+			path = masks;
+			sourceTree = "<group>";
+		};
+		F87C36C02B4C1A9400716DCA /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				F87C36C22B4C1AAB00716DCA /* images */,
+				F87C36C12B4C1AA300716DCA /* fonts */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		F87C36C12B4C1AA300716DCA /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F87C36CB2B4C239F00716DCA /* MontserratAlternates-Bold.ttf */,
+				F87C36CC2B4C239F00716DCA /* MontserratAlternates-SemiBold.ttf */,
+				F87C36C32B4C1BFE00716DCA /* MontserratAlternates-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
+		F87C36C22B4C1AAB00716DCA /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		F87FEA012B2E06B5005E22F1 /* navigation */ = {
@@ -136,17 +184,18 @@
 			path = navigation;
 			sourceTree = "<group>";
 		};
-		F884FC352B2DFFE3008697BB /* components */ = {
+		F884FC352B2DFFE3008697BB /* views */ = {
 			isa = PBXGroup;
 			children = (
 				F884FC362B2DFFE3008697BB /* ui */,
 			);
-			path = components;
+			path = views;
 			sourceTree = "<group>";
 		};
 		F884FC362B2DFFE3008697BB /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F87C36BD2B4C149500716DCA /* masks */,
 				F884FC372B2DFFE3008697BB /* buttons */,
 				F884FC382B2DFFE3008697BB /* inputs */,
 			);
@@ -231,7 +280,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F87C36CE2B4C239F00716DCA /* MontserratAlternates-SemiBold.ttf in Resources */,
 				F82B77F92B1FA9B7004E249F /* Preview Assets.xcassets in Resources */,
+				F87C36CD2B4C239F00716DCA /* MontserratAlternates-Bold.ttf in Resources */,
+				F87C36C42B4C1BFE00716DCA /* MontserratAlternates-Regular.ttf in Resources */,
 				F82B77F62B1FA9B7004E249F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,9 +299,11 @@
 				F87FEA002B2E06A1005E22F1 /* SecondaryButton.swift in Sources */,
 				F83BAFFD2B2F34CC00EB53C1 /* SecureInput.swift in Sources */,
 				F87FEA342B2E1B63005E22F1 /* MainInput.swift in Sources */,
+				F87C36BF2B4C14CB00716DCA /* MaskScreenView.swift in Sources */,
 				F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */,
 				F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */,
 				F87FEA2F2B2E1ACD005E22F1 /* CrossButton.swift in Sources */,
+				F828EFB12B4AE786000531C0 /* RoundedShape.swift in Sources */,
 				F82B77F42B1FA9B6004E249F /* OnboardingScreenView.swift in Sources */,
 				F83BB0082B2F7A2300EB53C1 /* VerificationCodeScreenView.swift in Sources */,
 				F87FEA242B2E083C005E22F1 /* RegistrationScreenView.swift in Sources */,
@@ -392,16 +446,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fit-well-hub/Preview Content\"";
-				DEVELOPMENT_TEAM = 26H63L263P;
+				DEVELOPMENT_TEAM = 822KZXTV6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Fit-well-hub/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = FitWellHub;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,9 +464,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Vitali-Kupratsevich.Fit-well-hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -423,16 +481,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Fit-well-hub/Preview Content\"";
-				DEVELOPMENT_TEAM = 26H63L263P;
+				DEVELOPMENT_TEAM = 822KZXTV6Q;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Fit-well-hub/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = FitWellHub;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -440,9 +499,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Vitali-Kupratsevich.Fit-well-hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

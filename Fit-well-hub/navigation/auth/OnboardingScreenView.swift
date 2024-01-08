@@ -7,53 +7,58 @@
 
 import SwiftUI
 
+
 struct OnboardingScreenView: View {
     var body: some View {
         NavigationStack {
-            Label()
-            Spacer()
-            VStack {
-                NavigationLink(destination: AuthorizationScreenView()) {
-                    SecondaryButton(title: "Войти")
-                }
-                Spacer().frame(height: 16)
-                NavigationLink(destination: RegistrationScreenView()) {
-                    PrimaryButton(title: "Регистрация")
-                }
-                Spacer().frame(height: 16)
-                Footer()
-            }
-            .padding(EdgeInsets(top: 0, leading: 16, bottom: 32, trailing: 16))
+            MaskScreenView(topComponent: Spacer(), bottomComponent: Footer())
         }
     }
 }
-
-struct Label: View {
-    var body: some View {
-        Text("FWH")
-            .font(.system(size: 32, weight: .semibold))
-            .padding(.top, 118)
-    }
-}
-
 
 struct Footer: View {
     var body: some View {
-        VStack{
-            Text("Регистрируясь, я принимаю")
+        VStack {
+            Text("Добро пожаловать")
+                .font(.custom("MontserratAlternates-Bold", size: 24))
+                .foregroundColor(Color("black-primary"))
+            Text("Какой-то приветственный\nтекст о приложении")
+                .padding(.top, 20)
+                .font(.custom("MontserratAlternates-Regular", size: 16))
                 .multilineTextAlignment(.center)
-                .font(.system(size: 12))
-                .foregroundColor(Color("black-custom"))
-            NavigationLink(destination: PrivacyPolicyScreenView()) {
-                Text("Политику конфиденциальности")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 12))
-                    .foregroundColor(Color("black-custom"))
-                    .underline()
-            }
+                .foregroundColor(Color("black-primary"))
+            HStack(spacing: 65) {
+                HStack(spacing: 12) {
+                    VStack{
+                        RoundedRectangle(cornerRadius: 7)
+                            .fill(.white)
+                            .strokeBorder(Color("orange-primary"), lineWidth: 2)
+                            .frame(width: 14, height: 14)
+                    }
+                    VStack{
+                        RoundedRectangle(cornerRadius: 7)
+                            .fill(.white)
+                            .strokeBorder(Color("orange-primary"), lineWidth: 2)
+                            .frame(width: 14, height: 14)
+                    }
+                    VStack {
+                        RoundedRectangle(cornerRadius: 7)
+                            .fill(Color("orange-primary"))
+                            .strokeBorder(Color("orange-primary"), lineWidth: 2)
+                            .frame(width: 42, height: 14)
+                    }
+                }
+                
+                NavigationLink(destination: RegistrationScreenView()) {
+                    PrimaryButton(title: "Начать")
+                }
+                
+            }.padding(.top, 51)
         }
+            .padding(EdgeInsets(top: 64, leading: 16, bottom: 8, trailing: 16) )
     }
 }
+
 
 #Preview {
     OnboardingScreenView()
