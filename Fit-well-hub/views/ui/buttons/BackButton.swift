@@ -15,10 +15,15 @@ struct BackButton: View {
         Button(action: {
             action()
         }) {
-            Image(systemName: "chevron.backward.circle.fill")
-                .resizable()
-                .frame(width: 24, height: 24)
-                .foregroundColor(Color("grey"))
+            ZStack {
+                RoundedRectangle(cornerRadius: 13)
+                    .fill(Color("orange-secondary"))
+                    .frame(width: 48, height: 48)
+                Image(systemName: "chevron.left")
+                    .resizable()
+                    .frame(width: 8, height: 14)
+                    .foregroundColor(.white)
+            }
         }
     }
 }

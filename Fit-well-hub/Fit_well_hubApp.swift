@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Fit_well_hubApp: App {
+    @State private var modelData = ModelData()
+    
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environment(modelData)
         }
     }
 }
