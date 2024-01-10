@@ -9,6 +9,7 @@ import SwiftUI
 
 struct QuestionnaireScreenView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var isLinkActiveRegistrationScreen: Bool = false
     
     @State var indexAnim: Double = 1.0
     @State var index: Int = 1
@@ -45,22 +46,30 @@ struct QuestionnaireScreenView: View {
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                BackButton {
+                BackButton(action: {
+                    if index == 1 {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    
                     withAnimation(.linear(duration: 5.0)) {
                         indexAnim -= 1
                     }
+            
                     index -= 1
-                    if index == 0 {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                }
+                    
+                }, colorPrimary: Color("orange-secondary"), colorSecondary: .white)
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    guard index != 3 else { return }
+                    if index == 3 {
+                        isLinkActiveRegistrationScreen = true
+                        return
+                    }
+                    
                     withAnimation(.linear(duration: 5.0)) {
                         indexAnim += 1
                     }
+                    
                     index += 1
                 } label: {
                     Text("Далее")
@@ -68,6 +77,10 @@ struct QuestionnaireScreenView: View {
                         .foregroundColor(Color("orange-secondary"))
                 }
             }
+        }
+        
+        NavigationLink(destination: RegistrationScreenView(), isActive: $isLinkActiveRegistrationScreen) {
+            EmptyView()
         }
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct BackButton: View {
 
     let action: () -> Void
+    var colorPrimary = Color(.black)
+    var colorSecondary = Color(.white)
     
     var body: some View {
         Button(action: {
@@ -17,19 +19,19 @@ struct BackButton: View {
         }) {
             ZStack {
                 RoundedRectangle(cornerRadius: 13)
-                    .fill(Color("orange-secondary"))
+                    .fill(colorPrimary)
                     .frame(width: 48, height: 48)
                 Image(systemName: "chevron.left")
                     .resizable()
                     .frame(width: 8, height: 14)
-                    .foregroundColor(.white)
+                    .foregroundColor(colorSecondary)
             }
         }
     }
 }
 
 #Preview {
-    BackButton {
-        print("press BackButton")
-    }
+    BackButton(action: {
+        print("press")
+    }, colorPrimary: .black, colorSecondary: .white)
 }

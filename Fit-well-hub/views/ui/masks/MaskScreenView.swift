@@ -17,13 +17,13 @@ struct MaskScreenView<ChildTopComponent: View, ChildBottomComponent: View>: View
                 VStack {
                     ZStack {}
                         .frame(maxWidth: .infinity)
-                        .background(Color("orange-secondary"))
+                        .background(Color("orange-light"))
                     
                     VStack {
                         topComponent
                     }
                         .frame(maxWidth: .infinity)
-                        .background(Color("orange-secondary"))
+                        .background(Color("orange-light"))
                         .cornerRadius(79, corners: [.bottomRight])
                 }
                 .frame(maxWidth: .infinity)
@@ -41,7 +41,7 @@ struct MaskScreenView<ChildTopComponent: View, ChildBottomComponent: View>: View
                     .background(.white)
             }
                 .frame(maxWidth: .infinity)
-                .background(Color("orange-secondary"))
+                .background(Color("orange-light"))
         
         }
 }

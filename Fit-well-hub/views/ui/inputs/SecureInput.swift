@@ -61,6 +61,6 @@ struct SecureInput: View {
     }
 }
 
-//#Preview {
-//    SecureInput(placeholder: "")
-//}
+#Preview {
+    SecureInput(value: .constant(""), isShowValue: .constant(false), placeholder: "sss", isShowIcon: true)
+}
