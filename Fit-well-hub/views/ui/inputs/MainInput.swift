@@ -10,26 +10,36 @@ import SwiftUI
 struct MainInput: View {
     @Binding var value: String
     var placeholder: String
+    var label: String
+    
     var maxCharacterCount: Int?
+    var isError: Bool?
     
     var body: some View {
-        ZStack(alignment: .trailing) {
+        ZStack(alignment: .leading) {
             TextField(placeholder, text: $value)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
-                .padding(EdgeInsets(top: 18, leading: 16, bottom: 18, trailing: 16))
+                .padding(EdgeInsets(top: 20, leading: 24, bottom: 20, trailing: 24))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("grey"), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(isError ?? false ? Color("error") : Color("orange-secondary"), lineWidth: 1)
                 )
-                .font(.system(size: 16))
-                .foregroundColor(Color("black-custom"))
-                if let maxCount = maxCharacterCount {
-                    Text("\(value.count)/\(maxCount)")
-                        .foregroundColor(Color("grey-light"))
-                        .font(.system(size: 16))
-                        .padding(.trailing, 16)
-                }
+                .font(.custom("MontserratAlternates-Regular", size: 16))
+                .foregroundColor(Color("black-primary"))
+            
+                HStack(alignment: .center, spacing: 0) {
+                    RoundedRectangle(cornerRadius: 0)
+                        .fill(.white)
+                        .frame(width: 5, height: 12)
+                    Text(label)
+                        .font(.custom("MontserratAlternates-Bold", size: 10))
+                        .background(.white)
+                        .foregroundColor(Color("orange-primary"))
+                    RoundedRectangle(cornerRadius: 0)
+                        .fill(.white)
+                        .frame(width: 5, height: 21)
+                }.padding(EdgeInsets(top: -42, leading: 24, bottom: 0, trailing: 0))
         }
         .onChange(of: value) {_ , newValue in
             if let maxCount = maxCharacterCount, newValue.count > maxCount {
@@ -38,4 +48,8 @@ struct MainInput: View {
         }
         Spacer().frame(height: 0)
     }
+}
+
+#Preview {
+    MainInput(value: .constant(""), placeholder: "ыыыы", label: "Emal", isError: false)
 }

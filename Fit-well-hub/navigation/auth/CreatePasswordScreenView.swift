@@ -37,9 +37,9 @@ struct CreatePasswordScreenView: View {
         NavigationStack {
             VStack {
                 Spacer().frame(height: 33)
-                SecureInput(value: $pass, isShowValue: $isShowPass, placeholder: "Пароль", isShowIcon: true)
+                SecureInput(value: $pass, isShowValue: $isShowPass, label: "pass", placeholder: "Пароль", isShowIcon: true)
                 Spacer().frame(height: 12)
-                SecureInput(value: $repeatPass, isShowValue: $isShowPass, placeholder: "Повторите пароль", isShowIcon: false)
+                SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "pass", placeholder: "Повторите пароль", isShowIcon: false)
             }.onChange(of: repeatPass) {
                 isErrorPass = false
             }.onChange(of: pass) {

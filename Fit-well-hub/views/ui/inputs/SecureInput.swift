@@ -14,53 +14,68 @@ struct SecureInput: View {
     @FocusState private var isTextFieldFocused: Bool
     @FocusState private var isSecureFieldFocused: Bool
     
+    var label: String
     var placeholder: String
     var isShowIcon: Bool
+    var isError: Bool?
     
     var body: some View {
-        ZStack(alignment: .trailing) {
+        ZStack(alignment: .leading) {
+            ZStack(alignment: .trailing) {
                 VStack{
-                    if isShowValue {
-                        TextField(placeholder, text: $value)
-//                        .focused($isTextFieldFocused)
-                    } else {
-                        SecureField(placeholder, text: $value)
-//                        .focused($isSecureFieldFocused)
+                        if isShowValue {
+                            TextField(placeholder, text: $value)
+    //                        .focused($isTextFieldFocused)
+                        } else {
+                            SecureField(placeholder, text: $value)
+    //                        .focused($isSecureFieldFocused)
+                        }
                     }
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .frame(height: 21)
+                    .padding(EdgeInsets(top: 20, leading: 24, bottom: 20, trailing: 24))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(isError ?? false ? Color("error") : Color("orange-secondary"), lineWidth: 1)
+                    )
+                    .font(.custom("MontserratAlternates-Regular", size: 16))
+                    .foregroundColor(Color("black-primary"))
+                
+                if isShowIcon {
+                    Image(systemName: isShowValue ? "eye.slash.fill" : "eye.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 17, height: 17)
+                        .foregroundColor(Color("orange-primary"))
+                        .padding(.trailing, 16)
+                        .onTapGesture {
+                            isShowValue.toggle()
+    //                        if isShowValue {
+    //                            isTextFieldFocused = true
+    //                        } else {
+    //                            isSecureFieldFocused = true
+    //                        }
+                        }
                 }
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                .frame(height: 21)
-                .padding(EdgeInsets(top: 18, leading: 16, bottom: 18, trailing: 16))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color("grey"), lineWidth: 1)
-                )
-                .font(.system(size: 16))
-                .foregroundColor(Color("black-custom"))
-            
-            if isShowIcon {
-                Image(systemName: isShowValue ? "eye.slash.fill" : "eye.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(Color("black"))
-                    .padding(.trailing, 16)
-                    .onTapGesture {
-                        isShowValue.toggle()
-//                        if isShowValue {
-//                            isTextFieldFocused = true
-//                        } else {
-//                            isSecureFieldFocused = true
-//                        }
-                    }
             }
-            
+            Spacer().frame(height: 0)
+            HStack(alignment: .center, spacing: 0) {
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(.white)
+                    .frame(width: 5, height: 12)
+                Text(label)
+                    .font(.custom("MontserratAlternates-Bold", size: 10))
+                    .background(.white)
+                    .foregroundColor(Color("orange-primary"))
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(.white)
+                    .frame(width: 5, height: 21)
+            }.padding(EdgeInsets(top: -42, leading: 24, bottom: 0, trailing: 0))
         }
-        Spacer().frame(height: 0)
     }
 }
 
 #Preview {
-    SecureInput(value: .constant(""), isShowValue: .constant(false), placeholder: "sss", isShowIcon: true)
+    SecureInput(value: .constant(""), isShowValue: .constant(false), label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true)
 }

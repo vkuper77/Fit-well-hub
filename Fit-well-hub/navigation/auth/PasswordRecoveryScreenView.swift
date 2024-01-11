@@ -30,7 +30,7 @@ struct PasswordRecoveryScreenView: View {
     var body: some View {
         NavigationStack {
             Spacer().frame(height: 33)
-            MainInput(value: $email, placeholder: "Email")
+            MainInput(value: $email, placeholder: "Email", label: "Email")
                 .onChange(of: email) { isErrorEmail = false}
             if isErrorEmail {
                 Spacer().frame(height: 4)

@@ -62,41 +62,39 @@ struct RegistrationScreenView: View {
                     .multilineTextAlignment(.center)
                 Spacer().frame(height: 34)
             }, bottomComponent: VStack {
+                Spacer().frame(height: 62)
+                
                 VStack {
-                    Spacer().frame(height: 62)
-                    MainInput(value: $email, placeholder: "Email")
+                    MainInput(value: $email, placeholder: "Введите email...", label: "Email", isError: isErrorEmail || isErrorUserExist)
                     if isErrorEmail {
                         Spacer().frame(height: 4)
                         HStack {
-                            Text("Неправильный формат электронной почты. Пожалуйста, проверьте его и попробуйте еще раз")
+                            Text("Неправильный формат электронной почты.")
                                 .multilineTextAlignment(.leading)
-                                .font(.system(size: 12))
+                                .font(.custom("MontserratAlternates-Regular", size: 12))
                                 .foregroundColor(Color("error"))
                                 Spacer()
                         }
-                        .padding(.leading, 16)
                     }
-                    
                     if isErrorUserExist {
                         Spacer().frame(height: 4)
                         HStack {
                             NavigationLink(destination: AuthorizationScreenView()) {
-                                Text("Пользователь с таким email уже существует.\nЕсли данный email Ваш -\(Text("войдите в систему").underline(true, color: Color("error")))")
+                                Text("Аккаунт с данным email уже существует")
                                     .multilineTextAlignment(.leading)
-                                    .font(.system(size: 12))
+                                    .font(.custom("MontserratAlternates-Regular", size: 12))
                                     .foregroundColor(Color("error"))
                             }
                             Spacer()
                         }
-                        .padding(.leading, 16)
                     }
                 }.onChange(of: email ) { isErrorEmail = false }
                 
-                VStack {
-                    Spacer().frame(height: 16)
-                    SecureInput(value: $pass, isShowValue: $isShowPass, placeholder: "Пароль", isShowIcon: true)
-                    Spacer().frame(height: 16)
-                    SecureInput(value: $repeatPass, isShowValue: $isShowPass, placeholder: "Повторите пароль", isShowIcon: false)
+                Spacer().frame(height: 16)
+                
+                VStack(spacing: 16) {
+                    SecureInput(value: $pass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: isErrorPass)
+                    SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false, isError: isErrorPass)
                 }.onChange(of: repeatPass) {
                     isErrorPass = false
                 }.onChange(of: pass) {
@@ -108,11 +106,10 @@ struct RegistrationScreenView: View {
                     HStack {
                         Text("Пароли не совпадают")
                             .multilineTextAlignment(.leading)
-                            .font(.system(size: 12))
+                            .font(.custom("MontserratAlternates-Regular", size: 12))
                             .foregroundColor(Color("error"))
                             Spacer()
                     }
-                    .padding(.leading, 16)
                 }
                 
                 Spacer().frame(height: 24)
@@ -130,9 +127,14 @@ struct RegistrationScreenView: View {
                     Text("Уже есть аккаунт?")
                         .font(.custom("MontserratAlternates-Regular", size: 12))
                         .foregroundColor(Color("orange-primary"))
-                    Text("Авторизироваться")
-                        .font(.custom("MontserratAlternates-SemiBold", size: 12))
-                        .foregroundColor(Color("orange-primary"))
+                    
+                    Button{
+                        
+                    } label: {
+                        Text("Авторизироваться")
+                            .font(.custom("MontserratAlternates-SemiBold", size: 12))
+                            .foregroundColor(Color("orange-primary"))
+                    }
                 }
                 
             }.padding(.horizontal, 16))
@@ -140,7 +142,7 @@ struct RegistrationScreenView: View {
             Spacer()
             
             HStack {
-                RoundedRectangle(cornerRadius: 0)
+                Rectangle()
                     .fill(Color("grey"))
                     .frame(maxWidth: .infinity)
                     .frame(height: 0.5)
@@ -148,24 +150,42 @@ struct RegistrationScreenView: View {
                     .frame(width: 195)
                     .font(.custom("MontserratAlternates-Regular", size: 16))
                     .foregroundColor(Color("grey"))
-                RoundedRectangle(cornerRadius: 0)
+                Rectangle()
                     .fill(Color("grey"))
                     .frame(maxWidth: .infinity)
                     .frame(height: 0.5)
             }
             
             HStack(spacing: 16) {
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(Color("grey-light"))
-                    .frame(width: 112, height: 59)
-                RoundedRectangle(cornerRadius: 18)
-                    .fill(Color("grey-light"))
-                    .frame(width: 112, height: 59)
+                Button{
                     
+                } label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 18)
+                            .fill(Color("grey-light"))
+                            .frame(width: 112, height: 59)
+                        Image("apple-logo")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }
+                }
+                
+                Button{
+                    
+                } label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 18)
+                            .fill(Color("grey-light"))
+                            .frame(width: 112, height: 59)
+                        Image("google-logo")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }
+                }
+
             }
             .padding(.top, 13)
             .padding(.bottom, 8)
-            
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

@@ -31,7 +31,7 @@ struct VerificationCodeScreenView: View {
             
             Spacer().frame(height: 16)
             
-            MainInput(value: $code, placeholder: "Код")
+            MainInput(value: $code, placeholder: "Код", label: "Код")
                 .onSubmit {
                     submit()
                 }
