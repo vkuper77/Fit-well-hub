@@ -118,7 +118,7 @@ struct RegistrationScreenView: View {
                     submit()
                 } label: {
                     PrimaryButton(title: "Зарегистрироваться")
-                        .opacity(!isButtonEnabled ? 0.4 : 1)
+                        .opacity(!isButtonEnabled ? 0.5 : 1)
                 }
                 
                 Spacer().frame(height: 16)

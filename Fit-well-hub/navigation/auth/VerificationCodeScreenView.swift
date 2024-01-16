@@ -19,44 +19,46 @@ struct VerificationCodeScreenView: View {
     
     var body: some View {
         NavigationStack{
-            Spacer().frame(height: 48)
-            
-            Text("Код отправлен на почту")
-                .font(.system(size: 16, weight: .regular))
-                .foregroundColor(Color("black-custom"))
-            
-            Text("r.sanchez1992gmail.com")
-                .font(.system(size: 16, weight: .bold))
-                .foregroundColor(Color("black-custom"))
-            
-            Spacer().frame(height: 16)
-            
-            MainInput(value: $code, placeholder: "Код", label: "Код")
-                .onSubmit {
-                    submit()
-                }
-            Spacer()
-            
-            Text("Запросить код \(Text("еще раз.").underline(true, color: Color("black-custom")))")
-                .font(.system(size: 16, weight: .regular))
-                .foregroundColor(Color("black-custom"))
-                .onTapGesture {
-                    print("press")
-                }
-            
+            MaskScreenView(topComponent: VStack {
+                Spacer().frame(height: 40)
+                Text("Восстановление пароля")
+                    .font(.custom("MontserratAlternates-Bold", size: 24))
+                    .foregroundColor(.white)
+                Spacer().frame(height: 16)
+                Text("Код отправлен на email")
+                    .font(.custom("MontserratAlternates-Regular", size: 16))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                Text("r.sanchez1992gmail.com")
+                    .font(.custom("MontserratAlternates-Semibold", size: 16))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                Spacer().frame(height: 34)
+            }, bottomComponent: VStack {               
+                Spacer().frame(height: 62)
+                
+                
+                
+                Spacer()
+                Text("Запросить код \(Text("еще раз.").underline(true, color: Color("orange-secondary")))")
+                    .font(.custom("MontserratAlternates-Regular", size: 16))
+                    .foregroundColor(Color("orange-secondary"))
+                    .onTapGesture {
+                        print("press")
+                    }
+            })
             .navigationBarBackButtonHidden(true)
-            .navigationBarTitle("Код верификации", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton { presentationMode.wrappedValue.dismiss() }
+                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: Color("orange-secondary")
+                    )
                 }
             }
             
             NavigationLink(destination: CreatePasswordScreenView(), isActive: $isLinkActive) {
                 EmptyView()
             }
-            
-        }.padding(EdgeInsets(top: 0, leading: 16, bottom: 32, trailing: 16) )
+        }
     }
 }
 

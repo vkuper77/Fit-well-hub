@@ -35,52 +35,64 @@ struct CreatePasswordScreenView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Spacer().frame(height: 33)
-                SecureInput(value: $pass, isShowValue: $isShowPass, label: "pass", placeholder: "Пароль", isShowIcon: true)
-                Spacer().frame(height: 12)
-                SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "pass", placeholder: "Повторите пароль", isShowIcon: false)
-            }.onChange(of: repeatPass) {
-                isErrorPass = false
-            }.onChange(of: pass) {
-                isErrorPass = false
-            }
-            
-            if isErrorPass {
-                Spacer().frame(height: 4)
-                HStack {
-                    Text("Пароли не совпадают")
-                        .multilineTextAlignment(.leading)
-                        .font(.system(size: 12))
-                        .foregroundColor(Color("error"))
-                        Spacer()
+            MaskScreenView(topComponent: VStack {
+                Spacer().frame(height: 40)
+                Text("Восстановление пароля")
+                    .font(.custom("MontserratAlternates-Bold", size: 24))
+                    .foregroundColor(.white)
+                Spacer().frame(height: 16)
+                Text("Придумайте новый пароль")
+                    .font(.custom("MontserratAlternates-Regular", size: 16))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                Spacer().frame(height: 34)
+            }, bottomComponent: VStack {
+                Spacer().frame(height: 62)
+                
+                VStack {
+                    SecureInput(value: $pass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true)
+                    Spacer().frame(height: 16)
+                    SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false)
+                }.onChange(of: repeatPass) {
+                    isErrorPass = false
+                }.onChange(of: pass) {
+                    isErrorPass = false
                 }
-                .padding(.leading, 16)
-            }
-            
-            Spacer().frame(height: 12)
-            
-            Button {
-                submit()
-            } label: {
-                PrimaryButton(title: "Подтвердить")
-                    .opacity(!isButtonEnabled ? 0.4 : 1)
-            }
-            
-            Spacer()
-                .navigationBarBackButtonHidden(true)
-                .navigationBarTitle("Создайте новый пароль", displayMode: .inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        BackButton { presentationMode.wrappedValue.dismiss() }
+                
+                if isErrorPass {
+                    Spacer().frame(height: 4)
+                    HStack {
+                        Text("Пароли не совпадают")
+                            .multilineTextAlignment(.leading)
+                            .font(.custom("MontserratAlternates-Regular", size: 12))
+                            .foregroundColor(Color("error"))
+                            Spacer()
                     }
+                    .padding(.leading, 16)
                 }
-            
+                
+                Spacer().frame(height: 24)
+                
+                Button {
+                    submit()
+                } label: {
+                    PrimaryButton(title: "Подтвердить")
+                        .opacity(!isButtonEnabled ? 0.5 : 1)
+                }
+                
+                Spacer()
+            }.padding(.horizontal, 16))
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: Color("orange-secondary")
+                    )
+                }
+            }
             NavigationLink(destination: AuthorizationScreenView(), isActive: $isLinkActive) {
                 EmptyView()
             }
-            
-        }.padding(.horizontal, 16)
+        }
     }
 }
 

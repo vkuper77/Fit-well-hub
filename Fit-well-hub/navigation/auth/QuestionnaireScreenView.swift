@@ -78,7 +78,6 @@ struct QuestionnaireScreenView: View {
                 }
             }
         }
-        
         NavigationLink(destination: RegistrationScreenView(), isActive: $isLinkActiveRegistrationScreen) {
             EmptyView()
         }

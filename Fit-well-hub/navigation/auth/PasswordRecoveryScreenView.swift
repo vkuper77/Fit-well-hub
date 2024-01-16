@@ -29,41 +29,56 @@ struct PasswordRecoveryScreenView: View {
     
     var body: some View {
         NavigationStack {
-            Spacer().frame(height: 33)
-            MainInput(value: $email, placeholder: "Email", label: "Email")
-                .onChange(of: email) { isErrorEmail = false}
-            if isErrorEmail {
-                Spacer().frame(height: 4)
-                HStack {
-                    Text("Неправильный формат электронной почты. Пожалуйста, проверьте его и попробуйте еще раз")
-                        .multilineTextAlignment(.leading)
-                        .font(.system(size: 12))
-                        .foregroundColor(Color("error"))
-                        Spacer()
+            MaskScreenView(topComponent: VStack {
+                Spacer().frame(height: 40)
+                Text("Восстановление пароля")
+                    .font(.custom("MontserratAlternates-Bold", size: 24))
+                    .foregroundColor(.white)
+                Spacer().frame(height: 16)
+                Text("Введите ваш email для получения\nкода на восстановление пароля")
+                    .font(.custom("MontserratAlternates-Regular", size: 16))
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                Spacer().frame(height: 34)
+            }, bottomComponent: VStack {
+                Spacer().frame(height: 62)
+                MainInput(value: $email, placeholder: "Email", label: "Email")
+                    .onChange(of: email) { isErrorEmail = false}
+                
+                if isErrorEmail {
+                    Spacer().frame(height: 4)
+                    HStack {
+                        Text("Неправильный формат электронной почты.")
+                            .multilineTextAlignment(.leading)
+                            .font(.custom("MontserratAlternates-Regular", size: 12))
+                            .foregroundColor(Color("error"))
+                            Spacer()
+                    }
                 }
-                .padding(.leading, 16)
-            }
-            Spacer().frame(height: 12)
-            Button {
-                submit()
-            } label: {
-                PrimaryButton(title: "Продолжить")
-                    .opacity(!isButtonEnabled ? 0.3 : 1)
-            }
-            .disabled(!isButtonEnabled)
-                            
-            Spacer()
+                
+                Spacer().frame(height: 24)
+                
+                Button {
+                    submit()
+                } label: {
+                    PrimaryButton(title: "Получить код")
+                        .opacity(!isButtonEnabled ? 0.5 : 1)
+                }
+                .disabled(!isButtonEnabled)
+                
+                Spacer()
+            }.padding(.horizontal, 16))
             .navigationBarBackButtonHidden(true)
-            .navigationBarTitle("Восстановление пароля", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton { presentationMode.wrappedValue.dismiss() }
+                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: Color("orange-secondary")
+                    )
                 }
             }
             NavigationLink(destination: VerificationCodeScreenView(), isActive: $isLinkActive) {
                 EmptyView()
             }
-        }.padding(.horizontal, 16)
+        }
     }
 }
 
