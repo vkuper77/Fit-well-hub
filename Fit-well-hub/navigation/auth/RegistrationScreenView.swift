@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RegistrationScreenView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var isLinkActiveCodeScreen: Bool = false
     
     @State var email: String = ""
     
@@ -37,6 +38,7 @@ struct RegistrationScreenView: View {
     }
     
     func submit () {
+        isLinkActiveCodeScreen = true
         
         if !isValidEmail(email) {
             isErrorEmail = true
@@ -170,7 +172,7 @@ struct RegistrationScreenView: View {
                     }
                 }
                 
-                Button{
+                Button {
                     
                 } label: {
                     ZStack{
@@ -194,6 +196,9 @@ struct RegistrationScreenView: View {
                     }, colorPrimary: .white, colorSecondary: Color("orange-secondary"))
                 }
             }
+        }
+        NavigationLink(destination: VerificationCodeScreenView(), isActive: $isLinkActiveCodeScreen) {
+            EmptyView()
         }
     }
 }

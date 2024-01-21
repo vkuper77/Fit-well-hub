@@ -37,7 +37,7 @@ struct VerificationCodeScreenView: View {
             }, bottomComponent: VStack {               
                 Spacer().frame(height: 62)
                 
-                
+                CodeInput(numberOfFiled: 4)
                 
                 Spacer()
                 Text("Запросить код \(Text("еще раз.").underline(true, color: Color("orange-secondary")))")

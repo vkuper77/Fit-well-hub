@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F807BDCA2B5DA4A800F78996 /* CodeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F807BDC92B5DA4A800F78996 /* CodeInput.swift */; };
 		F828EFB12B4AE786000531C0 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828EFB02B4AE786000531C0 /* RoundedShape.swift */; };
 		F82B77F22B1FA9B6004E249F /* Fit_well_hubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B77F12B1FA9B6004E249F /* Fit_well_hubApp.swift */; };
 		F82B77F42B1FA9B6004E249F /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B77F32B1FA9B6004E249F /* OnboardingScreenView.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F807BDC92B5DA4A800F78996 /* CodeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInput.swift; sourceTree = "<group>"; };
 		F828EFB02B4AE786000531C0 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		F82B77EE2B1FA9B6004E249F /* Fit-well-hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit-well-hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82B77F12B1FA9B6004E249F /* Fit_well_hubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fit_well_hubApp.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			children = (
 				F87FEA332B2E1B63005E22F1 /* MainInput.swift */,
 				F83BAFFC2B2F34CC00EB53C1 /* SecureInput.swift */,
+				F807BDC92B5DA4A800F78996 /* CodeInput.swift */,
 			);
 			path = inputs;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				F87FEA342B2E1B63005E22F1 /* MainInput.swift in Sources */,
 				F87C36BF2B4C14CB00716DCA /* MaskScreenView.swift in Sources */,
 				F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */,
+				F807BDCA2B5DA4A800F78996 /* CodeInput.swift in Sources */,
 				F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */,
 				F87FEA2F2B2E1ACD005E22F1 /* CrossButton.swift in Sources */,
 				F8668A4C2B4DEBD800AD2884 /* DurationTrainingView.swift in Sources */,
