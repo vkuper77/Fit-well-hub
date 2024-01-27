@@ -36,9 +36,7 @@ struct VerificationCodeScreenView: View {
                 Spacer().frame(height: 34)
             }, bottomComponent: VStack {               
                 Spacer().frame(height: 62)
-                
                 CodeInput(numberOfFiled: 4)
-                
                 Spacer()
                 Text("Запросить код \(Text("еще раз.").underline(true, color: Color("orange-secondary")))")
                     .font(.custom("MontserratAlternates-Regular", size: 16))

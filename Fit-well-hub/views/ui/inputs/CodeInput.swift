@@ -19,40 +19,47 @@ struct CodeInput: View {
     }
     
     var body: some View {
-        HStack{
+        HStack(spacing: 24) {
             ForEach(0..<numberOfFiled, id: \.self ){ index in
-                TextField("", text: $value[index], onEditingChanged: {editing in
-                    if editing {
-                        oldValue = value[index]
-                    }
-                })
-                    .keyboardType(.numberPad)
-                    .frame(width: 48, height: 48)
-                    .background(.gray.opacity(0.1))
-                    .cornerRadius(5)
-                    .multilineTextAlignment(.center)
-                    .focused($fieldFocus, equals: index)
-                    .tag(index)
-                    .onChange(of: value[index]) { newValue in
-                        if value[index].count > 1 {
-                            let currentValue = Array(value[index])
-                            
-                            if currentValue[0] == Character(oldValue){
-                                value[index] = String(value[index].suffix(1))
-                            } else{
-                                value[index] = String(value[index].prefix(1))
-                            }
+                VStack {
+                    TextField("", text: $value[index], onEditingChanged: {editing in
+                        if editing {
+                            oldValue = value[index]
                         }
-                        if !newValue.isEmpty {
-                            if (index == numberOfFiled - 1) {
-                                fieldFocus = nil
+                    })
+                        .font(.custom("MontserratAlternates-Regular", size: 32))
+                        .foregroundColor(Color("black-primary"))
+                        .multilineTextAlignment(.center)
+                        .frame(width: 56, height: 49)
+                        .padding(.top, 9)
+                        .keyboardType(.numberPad)
+                        .focused($fieldFocus, equals: index)
+                        .tag(index)
+                        .onChange(of: value[index]) { newValue in
+                            if value[index].count > 1 {
+                                let currentValue = Array(value[index])
+                                
+                                if currentValue[0] == Character(oldValue){
+                                    value[index] = String(value[index].suffix(1))
+                                } else{
+                                    value[index] = String(value[index].prefix(1))
+                                }
+                            }
+                            if !newValue.isEmpty {
+                                if (index == numberOfFiled - 1) {
+                                    fieldFocus = nil
+                                } else {
+                                    fieldFocus = (fieldFocus ?? 0) + 1
+                                }
                             } else {
-                                fieldFocus = (fieldFocus ?? 0) + 1
+                                fieldFocus = (fieldFocus ?? 0) - 1
                             }
-                        } else {
-                            fieldFocus = (fieldFocus ?? 0) - 1
                         }
-                    }
+                    Rectangle()
+                        .fill(Color("orange-secondary"))
+                        .frame(width: 56, height: 1)
+                        
+                }
             }
         }
     }
