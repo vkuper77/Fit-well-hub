@@ -26,7 +26,3 @@ struct RoundedShape: Shape {
         return Path(path.cgPath)
     }
 }
-
-//#Preview {
-//    RoundedShape()
-//}

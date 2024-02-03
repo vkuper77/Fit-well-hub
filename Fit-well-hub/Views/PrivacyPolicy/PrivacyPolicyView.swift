@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PrivacyPolicyScreenView: View {
+struct PrivacyPolicyView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
@@ -25,5 +25,5 @@ struct PrivacyPolicyScreenView: View {
 }
 
 #Preview {
-    PrivacyPolicyScreenView()
+    PrivacyPolicyView()
 }

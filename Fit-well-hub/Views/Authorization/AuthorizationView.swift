@@ -1,5 +1,5 @@
 //
-//  RegistrationScreen.swift
+//  AuthorizationScreen.swift
 //  Fit-well-hub
 //
 //  Created by Vitali Kupratsevich on 9.12.23.
@@ -7,58 +7,41 @@
 
 import SwiftUI
 
-struct RegistrationScreenView: View {
+struct AuthorizationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var isLinkActiveCodeScreen: Bool = false
     
-    @State var email: String = ""
-    
-    @State var pass: String = ""
-    @State var repeatPass: String = ""
+    @State var login: String = ""
+    @State var password: String = ""
     
     @State var isShowPass: Bool = false
-    
-    @State var isErrorUserExist: Bool = false
+
+    @State var isError: Bool = false
     @State var isErrorEmail: Bool = false
-    @State var isErrorPass: Bool = false
-    
-    var isButtonEnabled: Bool {
-           return !pass.isEmpty 
-        && !repeatPass.isEmpty
-        && !email.isEmpty
-        && !isErrorUserExist 
-        && !isErrorEmail
-        && !isErrorPass
-    }
-    
-    func clear () {
-        isErrorUserExist = false
-        isErrorEmail = false
-        email = ""
-    }
     
     func submit () {
-        isLinkActiveCodeScreen = true
+        print("login:", login)
+        print("password:", password)
         
-        if !isValidEmail(email) {
+        if !isValidEmail(login) {
             isErrorEmail = true
         }
         
-        if pass != repeatPass {
-            isErrorPass = true
-        }
-        
+        isError = login != "111" && password != "111"
+    }
+    
+    var isButtonEnabled: Bool {
+           return login.count > 0 && password.count > 0
     }
     
     var body: some View {
         NavigationStack {
             MaskScreenView(topComponent: VStack {
                 Spacer().frame(height: 40)
-                Text("Регистрация")
+                Text("Авторизация")
                     .font(.custom("MontserratAlternates-Bold", size: 24))
                     .foregroundColor(.white)
                 Spacer().frame(height: 16)
-                Text("Добро пожаловать, дорогой друг,\nв мир заботы о себе!")
+                Text("Введите email и пароль\nдля входа в приложение")
                     .font(.custom("MontserratAlternates-Regular", size: 16))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
@@ -66,10 +49,9 @@ struct RegistrationScreenView: View {
             }, bottomComponent: VStack {
                 Spacer().frame(height: 62)
                 
-                VStack {
-                    MainInput(value: $email, placeholder: "Введите email...", label: "Email", isError: isErrorEmail || isErrorUserExist)
+                VStack(spacing: 4) {
+                    MainInput(value: $login, placeholder: "Введите email...", label: "Email", isError: isErrorEmail || isError)
                     if isErrorEmail {
-                        Spacer().frame(height: 4)
                         HStack {
                             Text("Неправильный формат электронной почты.")
                                 .multilineTextAlignment(.leading)
@@ -78,40 +60,34 @@ struct RegistrationScreenView: View {
                                 Spacer()
                         }
                     }
-                    if isErrorUserExist {
-                        Spacer().frame(height: 4)
-                        HStack {
-                            NavigationLink(destination: AuthorizationScreenView()) {
-                                Text("Аккаунт с данным email уже существует")
-                                    .multilineTextAlignment(.leading)
-                                    .font(.custom("MontserratAlternates-Regular", size: 12))
-                                    .foregroundColor(Color("error"))
-                            }
-                            Spacer()
-                        }
-                    }
-                }.onChange(of: email ) { isErrorEmail = false }
+                }.onChange(of: login ) {
+                    isErrorEmail = false
+                    isError = false
+                }
                 
                 Spacer().frame(height: 16)
                 
-                VStack(spacing: 16) {
-                    SecureInput(value: $pass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: isErrorPass)
-                    SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false, isError: isErrorPass)
-                }.onChange(of: repeatPass) {
-                    isErrorPass = false
-                }.onChange(of: pass) {
-                    isErrorPass = false
-                }
-                
-                if isErrorPass {
-                    Spacer().frame(height: 4)
-                    HStack {
-                        Text("Пароли не совпадают")
-                            .multilineTextAlignment(.leading)
-                            .font(.custom("MontserratAlternates-Regular", size: 12))
-                            .foregroundColor(Color("error"))
-                            Spacer()
+                VStack(spacing: 8) {
+                    SecureInput(value: $password, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: isError)
+                    HStack(spacing: .none) {
+                        if isError {
+                            HStack {
+                                Text("Неправильный логин или пароль.")
+                                    .multilineTextAlignment(.leading)
+                                    .font(.custom("MontserratAlternates-Regular", size: 12))
+                                    .foregroundColor(Color("error"))
+                                Spacer()
+                            }
+                        }
+                        Spacer()
+                        Button{} label: {
+                            Text("Забыли пароль?")
+                                .font(.custom("MontserratAlternates-SemiBold", size: 12))
+                                .foregroundColor(Color("orange-primary"))
+                        }
                     }
+                }.onChange(of: password ) {
+                    isError = false
                 }
                 
                 Spacer().frame(height: 24)
@@ -119,21 +95,21 @@ struct RegistrationScreenView: View {
                 Button {
                     submit()
                 } label: {
-                    PrimaryButton(title: "Зарегистрироваться")
-                        .opacity(!isButtonEnabled ? 0.5 : 1)
+                    PrimaryButton(title: "Войти")
+                        .opacity(!isButtonEnabled ? 0.4 : 1)
                 }
                 
                 Spacer().frame(height: 16)
                 
                 HStack(spacing: 16) {
-                    Text("Уже есть аккаунт?")
+                    Text("Ещё нет аккаунта?")
                         .font(.custom("MontserratAlternates-Regular", size: 12))
                         .foregroundColor(Color("orange-primary"))
                     
                     Button{
                         
                     } label: {
-                        Text("Авторизироваться")
+                        Text("Зарегистрироваться")
                             .font(.custom("MontserratAlternates-SemiBold", size: 12))
                             .foregroundColor(Color("orange-primary"))
                     }
@@ -172,7 +148,7 @@ struct RegistrationScreenView: View {
                     }
                 }
                 
-                Button {
+                Button{
                     
                 } label: {
                     ZStack{
@@ -184,7 +160,6 @@ struct RegistrationScreenView: View {
                             .frame(width: 20, height: 20)
                     }
                 }
-
             }
             .padding(.top, 13)
             .padding(.bottom, 8)
@@ -197,10 +172,9 @@ struct RegistrationScreenView: View {
                 }
             }
         }
-        NavigationLink(destination: VerificationCodeScreenView(), isActive: $isLinkActiveCodeScreen) {
-            EmptyView()
-        }
     }
 }
 
-#Preview { RegistrationScreenView() }
+#Preview {
+    AuthorizationView()
+}

@@ -1,5 +1,5 @@
 //
-//  AuthorizationScreen.swift
+//  RegistrationScreen.swift
 //  Fit-well-hub
 //
 //  Created by Vitali Kupratsevich on 9.12.23.
@@ -7,41 +7,58 @@
 
 import SwiftUI
 
-struct AuthorizationScreenView: View {
+struct RegistrationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var isLinkActiveCodeScreen: Bool = false
     
-    @State var login: String = ""
-    @State var password: String = ""
+    @State var email: String = ""
+    
+    @State var pass: String = ""
+    @State var repeatPass: String = ""
     
     @State var isShowPass: Bool = false
-
-    @State var isError: Bool = false
+    
+    @State var isErrorUserExist: Bool = false
     @State var isErrorEmail: Bool = false
+    @State var isErrorPass: Bool = false
+    
+    var isButtonEnabled: Bool {
+           return !pass.isEmpty 
+        && !repeatPass.isEmpty
+        && !email.isEmpty
+        && !isErrorUserExist 
+        && !isErrorEmail
+        && !isErrorPass
+    }
+    
+    func clear () {
+        isErrorUserExist = false
+        isErrorEmail = false
+        email = ""
+    }
     
     func submit () {
-        print("login:", login)
-        print("password:", password)
+        isLinkActiveCodeScreen = true
         
-        if !isValidEmail(login) {
+        if !isValidEmail(email) {
             isErrorEmail = true
         }
         
-        isError = login != "111" && password != "111"
-    }
-    
-    var isButtonEnabled: Bool {
-           return login.count > 0 && password.count > 0
+        if pass != repeatPass {
+            isErrorPass = true
+        }
+        
     }
     
     var body: some View {
         NavigationStack {
             MaskScreenView(topComponent: VStack {
                 Spacer().frame(height: 40)
-                Text("Авторизация")
+                Text("Регистрация")
                     .font(.custom("MontserratAlternates-Bold", size: 24))
                     .foregroundColor(.white)
                 Spacer().frame(height: 16)
-                Text("Введите email и пароль\nдля входа в приложение")
+                Text("Добро пожаловать, дорогой друг,\nв мир заботы о себе!")
                     .font(.custom("MontserratAlternates-Regular", size: 16))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
@@ -49,9 +66,10 @@ struct AuthorizationScreenView: View {
             }, bottomComponent: VStack {
                 Spacer().frame(height: 62)
                 
-                VStack(spacing: 4) {
-                    MainInput(value: $login, placeholder: "Введите email...", label: "Email", isError: isErrorEmail || isError)
+                VStack {
+                    MainInput(value: $email, placeholder: "Введите email...", label: "Email", isError: isErrorEmail || isErrorUserExist)
                     if isErrorEmail {
+                        Spacer().frame(height: 4)
                         HStack {
                             Text("Неправильный формат электронной почты.")
                                 .multilineTextAlignment(.leading)
@@ -60,34 +78,40 @@ struct AuthorizationScreenView: View {
                                 Spacer()
                         }
                     }
-                }.onChange(of: login ) {
-                    isErrorEmail = false
-                    isError = false
-                }
-                
-                Spacer().frame(height: 16)
-                
-                VStack(spacing: 8) {
-                    SecureInput(value: $password, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: isError)
-                    HStack(spacing: .none) {
-                        if isError {
-                            HStack {
-                                Text("Неправильный логин или пароль.")
+                    if isErrorUserExist {
+                        Spacer().frame(height: 4)
+                        HStack {
+                            NavigationLink(destination: AuthorizationView()) {
+                                Text("Аккаунт с данным email уже существует")
                                     .multilineTextAlignment(.leading)
                                     .font(.custom("MontserratAlternates-Regular", size: 12))
                                     .foregroundColor(Color("error"))
-                                Spacer()
                             }
-                        }
-                        Spacer()
-                        Button{} label: {
-                            Text("Забыли пароль?")
-                                .font(.custom("MontserratAlternates-SemiBold", size: 12))
-                                .foregroundColor(Color("orange-primary"))
+                            Spacer()
                         }
                     }
-                }.onChange(of: password ) {
-                    isError = false
+                }.onChange(of: email ) { isErrorEmail = false }
+                
+                Spacer().frame(height: 16)
+                
+                VStack(spacing: 16) {
+                    SecureInput(value: $pass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: isErrorPass)
+                    SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false, isError: isErrorPass)
+                }.onChange(of: repeatPass) {
+                    isErrorPass = false
+                }.onChange(of: pass) {
+                    isErrorPass = false
+                }
+                
+                if isErrorPass {
+                    Spacer().frame(height: 4)
+                    HStack {
+                        Text("Пароли не совпадают")
+                            .multilineTextAlignment(.leading)
+                            .font(.custom("MontserratAlternates-Regular", size: 12))
+                            .foregroundColor(Color("error"))
+                            Spacer()
+                    }
                 }
                 
                 Spacer().frame(height: 24)
@@ -95,21 +119,21 @@ struct AuthorizationScreenView: View {
                 Button {
                     submit()
                 } label: {
-                    PrimaryButton(title: "Войти")
-                        .opacity(!isButtonEnabled ? 0.4 : 1)
+                    PrimaryButton(title: "Зарегистрироваться")
+                        .opacity(!isButtonEnabled ? 0.5 : 1)
                 }
                 
                 Spacer().frame(height: 16)
                 
                 HStack(spacing: 16) {
-                    Text("Ещё нет аккаунта?")
+                    Text("Уже есть аккаунт?")
                         .font(.custom("MontserratAlternates-Regular", size: 12))
                         .foregroundColor(Color("orange-primary"))
                     
                     Button{
                         
                     } label: {
-                        Text("Зарегистрироваться")
+                        Text("Авторизироваться")
                             .font(.custom("MontserratAlternates-SemiBold", size: 12))
                             .foregroundColor(Color("orange-primary"))
                     }
@@ -148,7 +172,7 @@ struct AuthorizationScreenView: View {
                     }
                 }
                 
-                Button{
+                Button {
                     
                 } label: {
                     ZStack{
@@ -160,6 +184,7 @@ struct AuthorizationScreenView: View {
                             .frame(width: 20, height: 20)
                     }
                 }
+
             }
             .padding(.top, 13)
             .padding(.bottom, 8)
@@ -172,9 +197,10 @@ struct AuthorizationScreenView: View {
                 }
             }
         }
+        NavigationLink(destination: VerificationCodeView(), isActive: $isLinkActiveCodeScreen) {
+            EmptyView()
+        }
     }
 }
 
-#Preview {
-    AuthorizationScreenView()
-}
+#Preview { RegistrationView() }

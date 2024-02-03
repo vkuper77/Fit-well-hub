@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DurationTrainingView: View {
-    @State private var modelData = ModelData()
+    @State private var modelData = CreateTrainingProgramViewModel()
     @State private var weekdaysAbbreviated: [String] = []
     
     @Binding var currentDuration: CommonData?

@@ -8,8 +8,8 @@
 import SwiftUI
 
 @main
-struct Fit_well_hubApp: App {
-    @State private var modelData = ModelData()
+struct AppMain: App {
+    @State private var modelData = CreateTrainingProgramViewModel()
     
     var body: some Scene {
         WindowGroup {

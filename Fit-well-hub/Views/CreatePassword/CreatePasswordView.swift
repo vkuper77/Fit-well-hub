@@ -1,5 +1,5 @@
 //
-//  PasswordRecoveryScreenView.swift
+//  CreatePasswordScreenView.swift
 //  Fit-well-hub
 //
 //  Created by Vitali Kupratsevich on 17.12.23.
@@ -7,24 +7,30 @@
 
 import SwiftUI
 
-struct PasswordRecoveryScreenView: View {
+struct CreatePasswordView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var email: String = ""
-    @State var isErrorEmail: Bool = false
     @State var isLinkActive: Bool = false
     
+    @State var pass: String = ""
+    @State var repeatPass: String = ""
+    
+    @State var isShowPass: Bool = false
+    @State var isErrorPass: Bool = false
+    
     var isButtonEnabled: Bool {
-        return !email.isEmpty && !isErrorEmail
+           return !pass.isEmpty
+        && !repeatPass.isEmpty
+        && !isErrorPass
     }
     
     func submit () {
-        if !isValidEmail(email) {
-            isErrorEmail = true
-            isLinkActive = false
+        
+        if pass != repeatPass {
+            isErrorPass = true
         } else {
-            isErrorEmail = false
             isLinkActive = true
         }
+        
     }
     
     var body: some View {
@@ -35,25 +41,34 @@ struct PasswordRecoveryScreenView: View {
                     .font(.custom("MontserratAlternates-Bold", size: 24))
                     .foregroundColor(.white)
                 Spacer().frame(height: 16)
-                Text("Введите ваш email для получения\nкода на восстановление пароля")
+                Text("Придумайте новый пароль")
                     .font(.custom("MontserratAlternates-Regular", size: 16))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Spacer().frame(height: 34)
             }, bottomComponent: VStack {
                 Spacer().frame(height: 62)
-                MainInput(value: $email, placeholder: "Email", label: "Email")
-                    .onChange(of: email) { isErrorEmail = false}
                 
-                if isErrorEmail {
+                VStack {
+                    SecureInput(value: $pass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true)
+                    Spacer().frame(height: 16)
+                    SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false)
+                }.onChange(of: repeatPass) {
+                    isErrorPass = false
+                }.onChange(of: pass) {
+                    isErrorPass = false
+                }
+                
+                if isErrorPass {
                     Spacer().frame(height: 4)
                     HStack {
-                        Text("Неправильный формат электронной почты.")
+                        Text("Пароли не совпадают")
                             .multilineTextAlignment(.leading)
                             .font(.custom("MontserratAlternates-Regular", size: 12))
                             .foregroundColor(Color("error"))
                             Spacer()
                     }
+                    .padding(.leading, 16)
                 }
                 
                 Spacer().frame(height: 24)
@@ -61,10 +76,9 @@ struct PasswordRecoveryScreenView: View {
                 Button {
                     submit()
                 } label: {
-                    PrimaryButton(title: "Получить код")
+                    PrimaryButton(title: "Подтвердить")
                         .opacity(!isButtonEnabled ? 0.5 : 1)
                 }
-                .disabled(!isButtonEnabled)
                 
                 Spacer()
             }.padding(.horizontal, 16))
@@ -75,7 +89,7 @@ struct PasswordRecoveryScreenView: View {
                     )
                 }
             }
-            NavigationLink(destination: VerificationCodeScreenView(), isActive: $isLinkActive) {
+            NavigationLink(destination: AuthorizationView(), isActive: $isLinkActive) {
                 EmptyView()
             }
         }
@@ -83,5 +97,5 @@ struct PasswordRecoveryScreenView: View {
 }
 
 #Preview {
-    PasswordRecoveryScreenView()
+    CreatePasswordView()
 }

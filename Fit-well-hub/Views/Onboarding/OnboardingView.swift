@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct OnboardingScreenView: View {
+struct OnboardingView: View {
     var body: some View {
         NavigationStack {
             MaskScreenView(topComponent: Spacer(), bottomComponent: Footer())
@@ -50,7 +50,7 @@ struct Footer: View {
                 }
                 
                 NavigationLink {
-                    QuestionnaireScreenView()
+                    CreateTrainingProgramView()
                 } label: {
                     PrimaryButton(title: "Начать")
                 }
@@ -62,5 +62,5 @@ struct Footer: View {
 
 
 #Preview {
-    OnboardingScreenView()
+    OnboardingView()
 }

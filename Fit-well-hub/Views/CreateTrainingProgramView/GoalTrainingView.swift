@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GoalTrainingView: View {
-    @State private var modelData = ModelData()
+    @State private var modelData = CreateTrainingProgramViewModel()
     @Binding var currentGoal: CommonData?
     
     var body: some View {

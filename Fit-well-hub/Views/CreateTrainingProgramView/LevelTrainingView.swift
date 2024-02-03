@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LevelTrainingView: View {
-    @State private var modelData = ModelData()
+    @State private var modelData = CreateTrainingProgramViewModel()
     @Binding var currentLevel: CommonData?
     
     var body: some View {

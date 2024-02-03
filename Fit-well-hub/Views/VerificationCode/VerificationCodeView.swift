@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct VerificationCodeScreenView: View {
+struct VerificationCodeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var code: String = ""
@@ -53,7 +53,7 @@ struct VerificationCodeScreenView: View {
                 }
             }
             
-            NavigationLink(destination: CreatePasswordScreenView(), isActive: $isLinkActive) {
+            NavigationLink(destination: CreatePasswordView(), isActive: $isLinkActive) {
                 EmptyView()
             }
         }
@@ -61,5 +61,5 @@ struct VerificationCodeScreenView: View {
 }
 
 #Preview {
-    VerificationCodeScreenView()
+    VerificationCodeView()
 }

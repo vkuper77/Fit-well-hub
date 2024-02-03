@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct QuestionnaireScreenView: View {
+struct CreateTrainingProgramView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var isLinkActiveRegistrationScreen: Bool = false
     
@@ -78,12 +78,12 @@ struct QuestionnaireScreenView: View {
                 }
             }
         }
-        NavigationLink(destination: RegistrationScreenView(), isActive: $isLinkActiveRegistrationScreen) {
+        NavigationLink(destination: RegistrationView(), isActive: $isLinkActiveRegistrationScreen) {
             EmptyView()
         }
     }
 }
 
 #Preview {
-    QuestionnaireScreenView()
+    CreateTrainingProgramView()
 }

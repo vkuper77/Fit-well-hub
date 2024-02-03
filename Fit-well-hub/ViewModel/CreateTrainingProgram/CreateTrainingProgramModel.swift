@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class ModelData {
+class CreateTrainingProgramViewModel {
     var data: [ProgramParametersData] = load("programParametersData.json")
     var trainingLevels: [CommonData] = []
     var goalTraining: [CommonData] = []
@@ -19,7 +19,6 @@ class ModelData {
         goalTraining = data.first?.goalTraining ?? []
         durationTraining = data.first?.durationTraining ?? []
     }
-    
 }
 
 func load<T: Decodable>(_ filename: String) -> T {
