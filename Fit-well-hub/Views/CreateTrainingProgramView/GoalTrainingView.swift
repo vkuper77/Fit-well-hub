@@ -15,7 +15,7 @@ struct GoalTrainingView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Цель тренировок")
                 .font(.custom("MontserratAlternates-SemiBold", size: 18))
-                .foregroundColor(Color("black-primary"))
+                .foregroundColor(.primaryBlack)
                 .frame(maxWidth: .infinity, alignment: .leading)
             ForEach(modelData.goalTraining, id: \.id) { level in
                 Button {

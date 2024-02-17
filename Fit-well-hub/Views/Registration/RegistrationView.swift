@@ -10,6 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var isLinkActiveCodeScreen: Bool = false
+    @State var isLinkAuthorizationScreen: Bool = false
     
     @State var email: String = ""
     
@@ -40,7 +41,7 @@ struct RegistrationView: View {
     func submit () {
         isLinkActiveCodeScreen = true
         
-        if !isValidEmail(email) {
+        if !email.isValidEmail {
             isErrorEmail = true
         }
         
@@ -74,7 +75,7 @@ struct RegistrationView: View {
                             Text("Неправильный формат электронной почты.")
                                 .multilineTextAlignment(.leading)
                                 .font(.custom("MontserratAlternates-Regular", size: 12))
-                                .foregroundColor(Color("error"))
+                                .foregroundColor(.primaryError)
                                 Spacer()
                         }
                     }
@@ -85,7 +86,7 @@ struct RegistrationView: View {
                                 Text("Аккаунт с данным email уже существует")
                                     .multilineTextAlignment(.leading)
                                     .font(.custom("MontserratAlternates-Regular", size: 12))
-                                    .foregroundColor(Color("error"))
+                                    .foregroundColor(.primaryError)
                             }
                             Spacer()
                         }
@@ -109,7 +110,7 @@ struct RegistrationView: View {
                         Text("Пароли не совпадают")
                             .multilineTextAlignment(.leading)
                             .font(.custom("MontserratAlternates-Regular", size: 12))
-                            .foregroundColor(Color("error"))
+                            .foregroundColor(.primaryError)
                             Spacer()
                     }
                 }
@@ -126,17 +127,19 @@ struct RegistrationView: View {
                 Spacer().frame(height: 16)
                 
                 HStack(spacing: 16) {
+                    
                     Text("Уже есть аккаунт?")
                         .font(.custom("MontserratAlternates-Regular", size: 12))
-                        .foregroundColor(Color("orange-primary"))
+                        .foregroundColor(.primaryOrange)
                     
-                    Button{
-                        
+                    Button {
+                        isLinkAuthorizationScreen = true
                     } label: {
                         Text("Авторизироваться")
                             .font(.custom("MontserratAlternates-SemiBold", size: 12))
-                            .foregroundColor(Color("orange-primary"))
+                            .foregroundColor(.primaryOrange)
                     }
+                    
                 }
                 
             }.padding(.horizontal, 16))
@@ -145,15 +148,15 @@ struct RegistrationView: View {
             
             HStack {
                 Rectangle()
-                    .fill(Color("grey"))
+                    .fill(Color.primaryGrey)
                     .frame(maxWidth: .infinity)
                     .frame(height: 0.5)
                 Text("Или войти с помощью")
                     .frame(width: 195)
                     .font(.custom("MontserratAlternates-Regular", size: 16))
-                    .foregroundColor(Color("grey"))
+                    .foregroundColor(.primaryGrey)
                 Rectangle()
-                    .fill(Color("grey"))
+                    .fill(Color.primaryGrey)
                     .frame(maxWidth: .infinity)
                     .frame(height: 0.5)
             }
@@ -164,7 +167,7 @@ struct RegistrationView: View {
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 18)
-                            .fill(Color("grey-light"))
+                            .fill(Color.secondaryGrey)
                             .frame(width: 112, height: 59)
                         Image("apple-logo")
                             .resizable()
@@ -177,7 +180,7 @@ struct RegistrationView: View {
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 18)
-                            .fill(Color("grey-light"))
+                            .fill(Color.secondaryGrey)
                             .frame(width: 112, height: 59)
                         Image("google-logo")
                             .resizable()
@@ -189,15 +192,11 @@ struct RegistrationView: View {
             .padding(.top, 13)
             .padding(.bottom, 8)
             .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, colorPrimary: .white, colorSecondary: Color("orange-secondary"))
-                }
-            }
         }
         NavigationLink(destination: VerificationCodeView(), isActive: $isLinkActiveCodeScreen) {
+            EmptyView()
+        }
+        NavigationLink(destination: AuthorizationView(), isActive: $isLinkAuthorizationScreen) {
             EmptyView()
         }
     }

@@ -65,7 +65,7 @@ struct CreatePasswordView: View {
                         Text("Пароли не совпадают")
                             .multilineTextAlignment(.leading)
                             .font(.custom("MontserratAlternates-Regular", size: 12))
-                            .foregroundColor(Color("error"))
+                            .foregroundColor(.primaryError)
                             Spacer()
                     }
                     .padding(.leading, 16)
@@ -85,7 +85,7 @@ struct CreatePasswordView: View {
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: Color("orange-secondary")
+                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: .secondaryOrange
                     )
                 }
             }

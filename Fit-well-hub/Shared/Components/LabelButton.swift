@@ -15,12 +15,12 @@ struct LabelButton: View {
         VStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 13)
-                    .fill(selected ? Color("orange-secondary") : Color("grey-light"))
+                    .fill(selected ? Color.secondaryOrange : Color.secondaryGrey)
                     .frame(width: 48, height: 48)
                 Text(title)
                     .font(.custom("MontserratAlternates-SemiBold", size: 16))
                     .textCase(.uppercase)
-                    .foregroundColor(selected ? .white : Color("black-primary"))
+                    .foregroundColor(selected ? .white : .primaryBlack)
             }.frame(width: 48, height: 48)
         }
         .frame(width: 48, height: 48)

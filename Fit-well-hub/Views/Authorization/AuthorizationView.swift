@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AuthorizationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var isLinkRegistrationScreen: Bool = false
+    @State var isLinkCreatePasswordScreen: Bool = false
     
     @State var login: String = ""
     @State var password: String = ""
@@ -22,7 +24,7 @@ struct AuthorizationView: View {
         print("login:", login)
         print("password:", password)
         
-        if !isValidEmail(login) {
+        if !login.isValidEmail {
             isErrorEmail = true
         }
         
@@ -56,7 +58,7 @@ struct AuthorizationView: View {
                             Text("Неправильный формат электронной почты.")
                                 .multilineTextAlignment(.leading)
                                 .font(.custom("MontserratAlternates-Regular", size: 12))
-                                .foregroundColor(Color("error"))
+                                .foregroundColor(.primaryError)
                                 Spacer()
                         }
                     }
@@ -75,15 +77,17 @@ struct AuthorizationView: View {
                                 Text("Неправильный логин или пароль.")
                                     .multilineTextAlignment(.leading)
                                     .font(.custom("MontserratAlternates-Regular", size: 12))
-                                    .foregroundColor(Color("error"))
+                                    .foregroundColor(.primaryError)
                                 Spacer()
                             }
                         }
                         Spacer()
-                        Button{} label: {
+                        Button {
+                            isLinkCreatePasswordScreen = true
+                        } label: {
                             Text("Забыли пароль?")
                                 .font(.custom("MontserratAlternates-SemiBold", size: 12))
-                                .foregroundColor(Color("orange-primary"))
+                                .foregroundColor(.primaryOrange)
                         }
                     }
                 }.onChange(of: password ) {
@@ -104,14 +108,14 @@ struct AuthorizationView: View {
                 HStack(spacing: 16) {
                     Text("Ещё нет аккаунта?")
                         .font(.custom("MontserratAlternates-Regular", size: 12))
-                        .foregroundColor(Color("orange-primary"))
+                        .foregroundColor(.primaryOrange)
                     
                     Button{
-                        
+                        isLinkRegistrationScreen = true
                     } label: {
                         Text("Зарегистрироваться")
                             .font(.custom("MontserratAlternates-SemiBold", size: 12))
-                            .foregroundColor(Color("orange-primary"))
+                            .foregroundColor(.primaryOrange)
                     }
                 }
                 
@@ -121,15 +125,15 @@ struct AuthorizationView: View {
             
             HStack {
                 Rectangle()
-                    .fill(Color("grey"))
+                    .fill(Color.primaryGrey)
                     .frame(maxWidth: .infinity)
                     .frame(height: 0.5)
                 Text("Или войти с помощью")
                     .frame(width: 195)
                     .font(.custom("MontserratAlternates-Regular", size: 16))
-                    .foregroundColor(Color("grey"))
+                    .foregroundColor(.primaryGrey)
                 Rectangle()
-                    .fill(Color("grey"))
+                    .fill(Color.primaryGrey)
                     .frame(maxWidth: .infinity)
                     .frame(height: 0.5)
             }
@@ -140,7 +144,7 @@ struct AuthorizationView: View {
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 18)
-                            .fill(Color("grey-light"))
+                            .fill(Color.secondaryGrey)
                             .frame(width: 112, height: 59)
                         Image("apple-logo")
                             .resizable()
@@ -153,7 +157,7 @@ struct AuthorizationView: View {
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 18)
-                            .fill(Color("grey-light"))
+                            .fill(Color.secondaryGrey)
                             .frame(width: 112, height: 59)
                         Image("google-logo")
                             .resizable()
@@ -164,12 +168,11 @@ struct AuthorizationView: View {
             .padding(.top, 13)
             .padding(.bottom, 8)
             .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }, colorPrimary: .white, colorSecondary: Color("orange-secondary"))
-                }
+            NavigationLink(destination: RegistrationView(), isActive: $isLinkRegistrationScreen) {
+                EmptyView()
+            }
+            NavigationLink(destination: CreatePasswordView(), isActive: $isLinkCreatePasswordScreen) {
+                EmptyView()
             }
         }
     }

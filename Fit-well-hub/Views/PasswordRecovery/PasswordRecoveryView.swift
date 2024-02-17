@@ -18,7 +18,7 @@ struct PasswordRecoveryView: View {
     }
     
     func submit () {
-        if !isValidEmail(email) {
+        if !email.isValidEmail {
             isErrorEmail = true
             isLinkActive = false
         } else {
@@ -51,7 +51,7 @@ struct PasswordRecoveryView: View {
                         Text("Неправильный формат электронной почты.")
                             .multilineTextAlignment(.leading)
                             .font(.custom("MontserratAlternates-Regular", size: 12))
-                            .foregroundColor(Color("error"))
+                            .foregroundColor(.primaryError)
                             Spacer()
                     }
                 }
@@ -71,7 +71,7 @@ struct PasswordRecoveryView: View {
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: Color("orange-secondary")
+                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: .secondaryOrange
                     )
                 }
             }

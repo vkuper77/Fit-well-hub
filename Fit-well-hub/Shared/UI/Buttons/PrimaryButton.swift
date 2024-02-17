@@ -13,7 +13,7 @@ struct PrimaryButton: View {
         VStack{
             ZStack {
                 LinearGradient(
-                    gradient: Gradient(colors: [Color("orange-secondary"), Color("orange-primary")]),
+                    gradient: Gradient(colors: [.secondaryOrange, .primaryOrange]),
                     startPoint: UnitPoint(x: 0, y: 0),
                     endPoint: UnitPoint(x: 1, y: 1)
                 )

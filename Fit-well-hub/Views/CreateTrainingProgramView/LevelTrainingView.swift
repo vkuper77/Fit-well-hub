@@ -15,7 +15,7 @@ struct LevelTrainingView: View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Уровень подготовки")
                 .font(.custom("MontserratAlternates-SemiBold", size: 18))
-                .foregroundColor(Color("black-primary"))
+                .foregroundColor(.primaryBlack)
                 .frame(maxWidth: .infinity, alignment: .leading)
             ForEach(modelData.trainingLevels, id: \.id) { level in
                 Button {

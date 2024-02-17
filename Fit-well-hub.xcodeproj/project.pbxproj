@@ -15,10 +15,12 @@
 		F82B77F92B1FA9B7004E249F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F82B77F82B1FA9B7004E249F /* Preview Assets.xcassets */; };
 		F83BAFFD2B2F34CC00EB53C1 /* SecureInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BAFFC2B2F34CC00EB53C1 /* SecureInput.swift */; };
 		F83BB0002B2F682B00EB53C1 /* PasswordRecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BAFFF2B2F682B00EB53C1 /* PasswordRecoveryView.swift */; };
-		F83BB0032B2F692100EB53C1 /* validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0022B2F692100EB53C1 /* validate.swift */; };
+		F83BB0032B2F692100EB53C1 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0022B2F692100EB53C1 /* String+Ext.swift */; };
 		F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0042B2F6AA600EB53C1 /* RootView.swift */; };
 		F83BB0082B2F7A2300EB53C1 /* VerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0072B2F7A2300EB53C1 /* VerificationCodeView.swift */; };
 		F83BB00A2B2F872E00EB53C1 /* CreatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83BB0092B2F872E00EB53C1 /* CreatePasswordView.swift */; };
+		F842260C2B7EAD9500E9FF56 /* FooterContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842260B2B7EAD9500E9FF56 /* FooterContent.swift */; };
+		F84AA9C92B81407A00F46B49 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84AA9C82B81407A00F46B49 /* Color+Ext.swift */; };
 		F8668A372B4DCF3600AD2884 /* ElementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8668A362B4DCF3600AD2884 /* ElementButton.swift */; };
 		F8668A3A2B4DD5B100AD2884 /* programParametersData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8668A392B4DD5B100AD2884 /* programParametersData.json */; };
 		F8668A3F2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift */; };
@@ -33,11 +35,9 @@
 		F87C36CE2B4C239F00716DCA /* MontserratAlternates-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F87C36CC2B4C239F00716DCA /* MontserratAlternates-SemiBold.ttf */; };
 		F87C36DA2B4C4A1500716DCA /* CreateTrainingProgramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87C36D92B4C4A1500716DCA /* CreateTrainingProgramView.swift */; };
 		F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FE9FD2B2E06A1005E22F1 /* PrimaryButton.swift */; };
-		F87FEA002B2E06A1005E22F1 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FE9FE2B2E06A1005E22F1 /* SecondaryButton.swift */; };
 		F87FEA242B2E083C005E22F1 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA212B2E083C005E22F1 /* RegistrationView.swift */; };
 		F87FEA252B2E083C005E22F1 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA222B2E083C005E22F1 /* AuthorizationView.swift */; };
 		F87FEA262B2E083C005E22F1 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA232B2E083C005E22F1 /* PrivacyPolicyView.swift */; };
-		F87FEA2F2B2E1ACD005E22F1 /* CrossButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA2D2B2E1ACD005E22F1 /* CrossButton.swift */; };
 		F87FEA302B2E1ACD005E22F1 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA2E2B2E1ACD005E22F1 /* BackButton.swift */; };
 		F87FEA342B2E1B63005E22F1 /* MainInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA332B2E1B63005E22F1 /* MainInput.swift */; };
 		F8D3F7FF2B66E64F0046F7AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */; };
@@ -53,10 +53,12 @@
 		F82B77F82B1FA9B7004E249F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F83BAFFC2B2F34CC00EB53C1 /* SecureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInput.swift; sourceTree = "<group>"; };
 		F83BAFFF2B2F682B00EB53C1 /* PasswordRecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryView.swift; sourceTree = "<group>"; };
-		F83BB0022B2F692100EB53C1 /* validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = validate.swift; sourceTree = "<group>"; };
+		F83BB0022B2F692100EB53C1 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		F83BB0042B2F6AA600EB53C1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		F83BB0072B2F7A2300EB53C1 /* VerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeView.swift; sourceTree = "<group>"; };
 		F83BB0092B2F872E00EB53C1 /* CreatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordView.swift; sourceTree = "<group>"; };
+		F842260B2B7EAD9500E9FF56 /* FooterContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterContent.swift; sourceTree = "<group>"; };
+		F84AA9C82B81407A00F46B49 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		F8668A362B4DCF3600AD2884 /* ElementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementButton.swift; sourceTree = "<group>"; };
 		F8668A392B4DD5B100AD2884 /* programParametersData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = programParametersData.json; sourceTree = "<group>"; };
 		F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingProgramModel.swift; sourceTree = "<group>"; };
@@ -72,11 +74,9 @@
 		F87C36CC2B4C239F00716DCA /* MontserratAlternates-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-SemiBold.ttf"; sourceTree = "<group>"; };
 		F87C36D92B4C4A1500716DCA /* CreateTrainingProgramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingProgramView.swift; sourceTree = "<group>"; };
 		F87FE9FD2B2E06A1005E22F1 /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
-		F87FE9FE2B2E06A1005E22F1 /* SecondaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		F87FEA212B2E083C005E22F1 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F87FEA222B2E083C005E22F1 /* AuthorizationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		F87FEA232B2E083C005E22F1 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
-		F87FEA2D2B2E1ACD005E22F1 /* CrossButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrossButton.swift; sourceTree = "<group>"; };
 		F87FEA2E2B2E1ACD005E22F1 /* BackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		F87FEA332B2E1B63005E22F1 /* MainInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInput.swift; sourceTree = "<group>"; };
 		F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +96,7 @@
 		F820CD012B6EE2C600C14BD7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				F8D951D02B6FACD90068CF4F /* Components */,
 				F884FC362B2DFFE3008697BB /* UI */,
 			);
 			path = Shared;
@@ -129,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				F82B77F32B1FA9B6004E249F /* OnboardingView.swift */,
+				F842260B2B7EAD9500E9FF56 /* FooterContent.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -168,12 +170,12 @@
 			path = CreateTrainingProgramView;
 			sourceTree = "<group>";
 		};
-		F820CD0A2B6EE63B00C14BD7 /* ViewModel */ = {
+		F820CD0A2B6EE63B00C14BD7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				F820CD0B2B6EE72700C14BD7 /* CreateTrainingProgram */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F820CD0B2B6EE72700C14BD7 /* CreateTrainingProgram */ = {
@@ -182,6 +184,13 @@
 				F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift */,
 			);
 			path = CreateTrainingProgram;
+			sourceTree = "<group>";
+		};
+		F820CD0C2B6EEAD300C14BD7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		F82B77E52B1FA9B6004E249F = {
@@ -203,12 +212,13 @@
 		F82B77F02B1FA9B6004E249F /* Fit-well-hub */ = {
 			isa = PBXGroup;
 			children = (
-				F8668A3B2B4DD60400AD2884 /* Model */,
-				F820CD0A2B6EE63B00C14BD7 /* ViewModel */,
+				F820CD0C2B6EEAD300C14BD7 /* Networking */,
+				F8668A3B2B4DD60400AD2884 /* Models */,
+				F820CD0A2B6EE63B00C14BD7 /* ViewModels */,
 				F884FC352B2DFFE3008697BB /* Views */,
 				F820CD012B6EE2C600C14BD7 /* Shared */,
 				F87C36C02B4C1A9400716DCA /* Resources */,
-				F83BB0012B2F68F500EB53C1 /* Helpers */,
+				F83BB0012B2F68F500EB53C1 /* Utiles */,
 				F82B77F12B1FA9B6004E249F /* AppMain.swift */,
 				F82B77F52B1FA9B7004E249F /* Assets.xcassets */,
 				F87C36CA2B4C21BF00716DCA /* Info.plist */,
@@ -225,13 +235,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		F83BB0012B2F68F500EB53C1 /* Helpers */ = {
+		F83BB0012B2F68F500EB53C1 /* Utiles */ = {
 			isa = PBXGroup;
 			children = (
-				F83BB0022B2F692100EB53C1 /* validate.swift */,
+				F83BB0022B2F692100EB53C1 /* String+Ext.swift */,
 				F828EFB02B4AE786000531C0 /* RoundedShape.swift */,
+				F84AA9C82B81407A00F46B49 /* Color+Ext.swift */,
 			);
-			path = Helpers;
+			path = Utiles;
 			sourceTree = "<group>";
 		};
 		F8668A382B4DD59E00AD2884 /* Data */ = {
@@ -242,12 +253,12 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		F8668A3B2B4DD60400AD2884 /* Model */ = {
+		F8668A3B2B4DD60400AD2884 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F8668A422B4DE21600AD2884 /* Program.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F87C36BD2B4C149500716DCA /* Masks */ = {
@@ -324,11 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				F87FEA2E2B2E1ACD005E22F1 /* BackButton.swift */,
-				F8668A362B4DCF3600AD2884 /* ElementButton.swift */,
-				F87FEA2D2B2E1ACD005E22F1 /* CrossButton.swift */,
 				F87FE9FD2B2E06A1005E22F1 /* PrimaryButton.swift */,
-				F87FE9FE2B2E06A1005E22F1 /* SecondaryButton.swift */,
-				F8668A4D2B4DF2F300AD2884 /* LabelButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -341,6 +348,15 @@
 				F807BDC92B5DA4A800F78996 /* CodeInput.swift */,
 			);
 			path = Inputs;
+			sourceTree = "<group>";
+		};
+		F8D951D02B6FACD90068CF4F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F8668A4D2B4DF2F300AD2884 /* LabelButton.swift */,
+				F8668A362B4DCF3600AD2884 /* ElementButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,19 +433,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F842260C2B7EAD9500E9FF56 /* FooterContent.swift in Sources */,
 				F8668A462B4DEA4400AD2884 /* LevelTrainingView.swift in Sources */,
-				F83BB0032B2F692100EB53C1 /* validate.swift in Sources */,
+				F83BB0032B2F692100EB53C1 /* String+Ext.swift in Sources */,
 				F8D3F7FF2B66E64F0046F7AA /* ContentView.swift in Sources */,
 				F87C36DA2B4C4A1500716DCA /* CreateTrainingProgramView.swift in Sources */,
 				F8668A432B4DE21600AD2884 /* Program.swift in Sources */,
-				F87FEA002B2E06A1005E22F1 /* SecondaryButton.swift in Sources */,
 				F83BAFFD2B2F34CC00EB53C1 /* SecureInput.swift in Sources */,
 				F87FEA342B2E1B63005E22F1 /* MainInput.swift in Sources */,
 				F87C36BF2B4C14CB00716DCA /* MaskScreenView.swift in Sources */,
 				F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */,
 				F807BDCA2B5DA4A800F78996 /* CodeInput.swift in Sources */,
 				F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */,
-				F87FEA2F2B2E1ACD005E22F1 /* CrossButton.swift in Sources */,
 				F8668A4C2B4DEBD800AD2884 /* DurationTrainingView.swift in Sources */,
 				F8668A482B4DEB4C00AD2884 /* GoalTrainingView.swift in Sources */,
 				F828EFB12B4AE786000531C0 /* RoundedShape.swift in Sources */,
@@ -439,6 +454,7 @@
 				F87FEA302B2E1ACD005E22F1 /* BackButton.swift in Sources */,
 				F83BB00A2B2F872E00EB53C1 /* CreatePasswordView.swift in Sources */,
 				F83BB0002B2F682B00EB53C1 /* PasswordRecoveryView.swift in Sources */,
+				F84AA9C92B81407A00F46B49 /* Color+Ext.swift in Sources */,
 				F8668A4E2B4DF2F300AD2884 /* LabelButton.swift in Sources */,
 				F8668A372B4DCF3600AD2884 /* ElementButton.swift in Sources */,
 				F87FEA252B2E083C005E22F1 /* AuthorizationView.swift in Sources */,
@@ -599,6 +615,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -634,6 +651,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

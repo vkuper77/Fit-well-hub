@@ -25,7 +25,7 @@ struct DurationTrainingView: View {
             VStack{
                 Text("Дни тренировок")
                     .font(.custom("MontserratAlternates-SemiBold", size: 18))
-                    .foregroundColor(Color("black-primary"))
+                    .foregroundColor(.primaryBlack)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 HStack(spacing: 4) {
                     ForEach(weekdaysAbbreviated, id: \.self) { day in
@@ -44,7 +44,7 @@ struct DurationTrainingView: View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Продолжительность")
                     .font(.custom("MontserratAlternates-SemiBold", size: 18))
-                    .foregroundColor(Color("black-primary"))
+                    .foregroundColor(.primaryBlack)
 
                 ForEach(modelData.durationTraining, id: \.id) { level in
                     Button {

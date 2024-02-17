@@ -28,7 +28,7 @@ struct CodeInput: View {
                         }
                     })
                         .font(.custom("MontserratAlternates-Regular", size: 32))
-                        .foregroundColor(Color("black-primary"))
+                        .foregroundColor(.primaryBlack)
                         .multilineTextAlignment(.center)
                         .frame(width: 56, height: 49)
                         .padding(.top, 9)
@@ -56,7 +56,7 @@ struct CodeInput: View {
                             }
                         }
                     Rectangle()
-                        .fill(Color("orange-secondary"))
+                        .fill(Color.secondaryOrange)
                         .frame(width: 56, height: 1)
                         
                 }

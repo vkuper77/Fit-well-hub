@@ -25,9 +25,9 @@ struct CreateTrainingProgramView: View {
                 ProgressView(value: indexAnim, total: 3) {
                     Text("Шаг \(Int(index))/3")
                         .font(.custom("MontserratAlternates-Regular", size: 16))
-                        .foregroundColor(Color("black-primary"))
+                        .foregroundColor(.primaryBlack)
                 }
-                .tint(Color("orange-secondary"))
+                .tint(.secondaryOrange)
             }
             .padding(EdgeInsets(top: 20, leading: 16, bottom: 0, trailing: 16))
             
@@ -74,7 +74,7 @@ struct CreateTrainingProgramView: View {
                 } label: {
                     Text("Далее")
                         .font(.custom("MontserratAlternates-SemiBold", size: 16))
-                        .foregroundColor(Color("orange-secondary"))
+                        .foregroundColor(.secondaryOrange)
                 }
             }
         }

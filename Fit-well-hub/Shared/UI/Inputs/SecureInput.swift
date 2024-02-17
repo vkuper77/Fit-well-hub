@@ -37,17 +37,17 @@ struct SecureInput: View {
                     .padding(EdgeInsets(top: 20, leading: 24, bottom: 20, trailing: 24))
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
-                            .stroke(isError ?? false ? Color("error") : Color("orange-secondary"), lineWidth: 1)
+                            .stroke(isError ?? false ? Color.primaryError : Color.secondaryOrange, lineWidth: 1)
                     )
                     .font(.custom("MontserratAlternates-Regular", size: 16))
-                    .foregroundColor(Color("black-primary"))
+                    .foregroundColor(.primaryBlack)
                 
                 if isShowIcon {
                     Image(systemName: isShowValue ? "eye.slash.fill" : "eye.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 17, height: 17)
-                        .foregroundColor(Color("orange-primary"))
+                        .foregroundColor(.primaryOrange)
                         .padding(.trailing, 16)
                         .onTapGesture {
                             isShowValue.toggle()
@@ -67,7 +67,7 @@ struct SecureInput: View {
                 Text(label)
                     .font(.custom("MontserratAlternates-Bold", size: 10))
                     .background(.white)
-                    .foregroundColor(Color("orange-primary"))
+                    .foregroundColor(.primaryOrange)
                 RoundedRectangle(cornerRadius: 0)
                     .fill(.white)
                     .frame(width: 5, height: 21)

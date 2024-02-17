@@ -38,9 +38,9 @@ struct VerificationCodeView: View {
                 Spacer().frame(height: 62)
                 CodeInput(numberOfFiled: 4)
                 Spacer()
-                Text("Запросить код \(Text("еще раз.").underline(true, color: Color("orange-secondary")))")
+                Text("Запросить код \(Text("еще раз.").underline(true, color: Color.secondaryOrange))")
                     .font(.custom("MontserratAlternates-Regular", size: 16))
-                    .foregroundColor(Color("orange-secondary"))
+                    .foregroundColor(.secondaryOrange)
                     .onTapGesture {
                         print("press")
                     }
@@ -48,7 +48,7 @@ struct VerificationCodeView: View {
             .navigationBarBackButtonHidden(true)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: Color("orange-secondary")
+                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: .secondaryOrange
                     )
                 }
             }
