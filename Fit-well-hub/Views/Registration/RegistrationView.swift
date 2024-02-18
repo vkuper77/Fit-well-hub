@@ -9,47 +9,7 @@ import SwiftUI
 
 struct RegistrationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var isLinkActiveCodeScreen: Bool = false
-    @State var isLinkAuthorizationScreen: Bool = false
-    
-    @State var email: String = ""
-    
-    @State var pass: String = ""
-    @State var repeatPass: String = ""
-    
-    @State var isShowPass: Bool = false
-    
-    @State var isErrorUserExist: Bool = false
-    @State var isErrorEmail: Bool = false
-    @State var isErrorPass: Bool = false
-    
-    var isButtonEnabled: Bool {
-           return !pass.isEmpty 
-        && !repeatPass.isEmpty
-        && !email.isEmpty
-        && !isErrorUserExist 
-        && !isErrorEmail
-        && !isErrorPass
-    }
-    
-    func clear () {
-        isErrorUserExist = false
-        isErrorEmail = false
-        email = ""
-    }
-    
-    func submit () {
-        isLinkActiveCodeScreen = true
-        
-        if !email.isValidEmail {
-            isErrorEmail = true
-        }
-        
-        if pass != repeatPass {
-            isErrorPass = true
-        }
-        
-    }
+    @StateObject var viewModel = RegistrationViewModel()
     
     var body: some View {
         NavigationStack {
@@ -68,8 +28,8 @@ struct RegistrationView: View {
                 Spacer().frame(height: 62)
                 
                 VStack {
-                    MainInput(value: $email, placeholder: "Введите email...", label: "Email", isError: isErrorEmail || isErrorUserExist)
-                    if isErrorEmail {
+                    MainInput(value: $viewModel.email, placeholder: "Введите email...", label: "Email", isError: viewModel.isErrorEmail || viewModel.isErrorUserExist)
+                    if viewModel.isErrorEmail {
                         Spacer().frame(height: 4)
                         HStack {
                             Text("Неправильный формат электронной почты.")
@@ -79,7 +39,7 @@ struct RegistrationView: View {
                                 Spacer()
                         }
                     }
-                    if isErrorUserExist {
+                    if viewModel.isErrorUserExist {
                         Spacer().frame(height: 4)
                         HStack {
                             NavigationLink(destination: AuthorizationView()) {
@@ -91,20 +51,20 @@ struct RegistrationView: View {
                             Spacer()
                         }
                     }
-                }.onChange(of: email ) { isErrorEmail = false }
+                }.onChange(of: viewModel.email ) { viewModel.isErrorEmail = false }
                 
                 Spacer().frame(height: 16)
                 
                 VStack(spacing: 16) {
-                    SecureInput(value: $pass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: isErrorPass)
-                    SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false, isError: isErrorPass)
-                }.onChange(of: repeatPass) {
-                    isErrorPass = false
-                }.onChange(of: pass) {
-                    isErrorPass = false
+                    SecureInput(value: $viewModel.pass, isShowValue: $viewModel.isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: viewModel.isErrorPass)
+                    SecureInput(value: $viewModel.repeatPass, isShowValue: $viewModel.isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false, isError: viewModel.isErrorPass)
+                }.onChange(of: viewModel.repeatPass) {
+                    viewModel.isErrorPass = false
+                }.onChange(of: viewModel.pass) {
+                    viewModel.isErrorPass = false
                 }
                 
-                if isErrorPass {
+                if viewModel.isErrorPass {
                     Spacer().frame(height: 4)
                     HStack {
                         Text("Пароли не совпадают")
@@ -118,11 +78,11 @@ struct RegistrationView: View {
                 Spacer().frame(height: 24)
                 
                 Button {
-                    submit()
+                    viewModel.submit()
                 } label: {
                     PrimaryButton(title: "Зарегистрироваться")
-                        .opacity(!isButtonEnabled ? 0.5 : 1)
-                }
+                        .opacity(!viewModel.isButtonEnabled ? 0.5 : 1)
+                }.disabled(!viewModel.isButtonEnabled)
                 
                 Spacer().frame(height: 16)
                 
@@ -133,7 +93,7 @@ struct RegistrationView: View {
                         .foregroundColor(.primaryOrange)
                     
                     Button {
-                        isLinkAuthorizationScreen = true
+                        viewModel.isLinkAuthorizationScreen = true
                     } label: {
                         Text("Авторизироваться")
                             .font(.custom("MontserratAlternates-SemiBold", size: 12))
@@ -193,10 +153,10 @@ struct RegistrationView: View {
             .padding(.bottom, 8)
             .navigationBarBackButtonHidden(true)
         }
-        NavigationLink(destination: VerificationCodeView(), isActive: $isLinkActiveCodeScreen) {
+        NavigationLink(destination: VerificationCodeView(), isActive: $viewModel.isLinkActiveCodeScreen) {
             EmptyView()
         }
-        NavigationLink(destination: AuthorizationView(), isActive: $isLinkAuthorizationScreen) {
+        NavigationLink(destination: AuthorizationView(), isActive: $viewModel.isLinkAuthorizationScreen) {
             EmptyView()
         }
     }

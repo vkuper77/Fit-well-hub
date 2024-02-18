@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct AppMain: App {
-    @State private var modelData = CreateTrainingProgramViewModel()
-    
+
     var body: some Scene {
         WindowGroup {
             RootView()
-                .environment(modelData)
         }
     }
 }

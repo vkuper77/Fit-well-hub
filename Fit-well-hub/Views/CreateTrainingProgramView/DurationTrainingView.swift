@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct DurationTrainingView: View {
-    @State private var modelData = CreateTrainingProgramViewModel()
-    @State private var weekdaysAbbreviated: [String] = []
-    
+
     @Binding var currentDuration: CommonData?
     @Binding var currentDays: [String]
     
-    func initDays() -> Void {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        weekdaysAbbreviated = dateFormatter.shortWeekdaySymbols.map { $0.lowercased() }
-    }
+    let weekdaysAbbreviated: [String]
+    let durationTraining: [CommonData]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 23) {
@@ -46,7 +41,7 @@ struct DurationTrainingView: View {
                     .font(.custom("MontserratAlternates-SemiBold", size: 18))
                     .foregroundColor(.primaryBlack)
 
-                ForEach(modelData.durationTraining, id: \.id) { level in
+                ForEach(durationTraining, id: \.id) { level in
                     Button {
                         currentDuration = level
                     } label: {
@@ -57,10 +52,9 @@ struct DurationTrainingView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(EdgeInsets(top: 24, leading: 16, bottom: 0, trailing: 16))
-        .onAppear { initDays() }
     }
 }
 
-#Preview {
-    DurationTrainingView(currentDuration: .constant(nil), currentDays: .constant([]))
-}
+//#Preview {
+//    DurationTrainingView(currentDuration: .constant(nil), currentDays: .constant([]))
+//}

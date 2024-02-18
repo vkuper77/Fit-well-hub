@@ -11,7 +11,7 @@ struct VerificationCodeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @State private var code: String = ""
-    @State var isLinkActive: Bool = false
+    @State private var isLinkActive: Bool = false
     
     func submit() {
         isLinkActive = true

@@ -18,9 +18,11 @@ struct BackButton: View {
             action()
         }) {
             ZStack {
+                
                 RoundedRectangle(cornerRadius: 13)
                     .fill(colorPrimary)
-                    .frame(width: 48, height: 48)
+                    .frame(width: 44, height: 44)
+                    
                 Image(systemName: "chevron.left")
                     .resizable()
                     .frame(width: 8, height: 14)

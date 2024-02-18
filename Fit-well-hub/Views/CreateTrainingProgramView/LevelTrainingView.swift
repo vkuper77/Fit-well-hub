@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LevelTrainingView: View {
-    @State private var modelData = CreateTrainingProgramViewModel()
     @Binding var currentLevel: CommonData?
+    let trainingLevels: [CommonData]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -17,7 +17,7 @@ struct LevelTrainingView: View {
                 .font(.custom("MontserratAlternates-SemiBold", size: 18))
                 .foregroundColor(.primaryBlack)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            ForEach(modelData.trainingLevels, id: \.id) { level in
+            ForEach(trainingLevels, id: \.id) { level in
                 Button {
                     currentLevel = level
                 } label: {
@@ -30,6 +30,6 @@ struct LevelTrainingView: View {
     }
 }
 
-#Preview {
-    LevelTrainingView(currentLevel: .constant(nil))
-}
+//#Preview {
+//    LevelTrainingView(currentLevel: .constant(nil), trainingLevels: .constant())
+//}

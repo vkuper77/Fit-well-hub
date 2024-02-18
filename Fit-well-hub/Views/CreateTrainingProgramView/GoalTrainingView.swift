@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct GoalTrainingView: View {
-    @State private var modelData = CreateTrainingProgramViewModel()
     @Binding var currentGoal: CommonData?
+    let goalTraining: [CommonData]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -17,7 +17,7 @@ struct GoalTrainingView: View {
                 .font(.custom("MontserratAlternates-SemiBold", size: 18))
                 .foregroundColor(.primaryBlack)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            ForEach(modelData.goalTraining, id: \.id) { level in
+            ForEach(goalTraining, id: \.id) { level in
                 Button {
                     currentGoal = level
                 } label: {
@@ -30,6 +30,6 @@ struct GoalTrainingView: View {
     }
 }
 
-#Preview {
-    GoalTrainingView(currentGoal: .constant(nil))
-}
+//#Preview {
+//    GoalTrainingView(currentGoal: .constant(nil))
+//}

@@ -23,7 +23,7 @@
 		F84AA9C92B81407A00F46B49 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84AA9C82B81407A00F46B49 /* Color+Ext.swift */; };
 		F8668A372B4DCF3600AD2884 /* ElementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8668A362B4DCF3600AD2884 /* ElementButton.swift */; };
 		F8668A3A2B4DD5B100AD2884 /* programParametersData.json in Resources */ = {isa = PBXBuildFile; fileRef = F8668A392B4DD5B100AD2884 /* programParametersData.json */; };
-		F8668A3F2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift */; };
+		F8668A3F2B4DDA5900AD2884 /* CreateTrainingProgramViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramViewModel.swift */; };
 		F8668A432B4DE21600AD2884 /* Program.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8668A422B4DE21600AD2884 /* Program.swift */; };
 		F8668A462B4DEA4400AD2884 /* LevelTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8668A452B4DEA4400AD2884 /* LevelTrainingView.swift */; };
 		F8668A482B4DEB4C00AD2884 /* GoalTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8668A472B4DEB4C00AD2884 /* GoalTrainingView.swift */; };
@@ -40,6 +40,9 @@
 		F87FEA262B2E083C005E22F1 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA232B2E083C005E22F1 /* PrivacyPolicyView.swift */; };
 		F87FEA302B2E1ACD005E22F1 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA2E2B2E1ACD005E22F1 /* BackButton.swift */; };
 		F87FEA342B2E1B63005E22F1 /* MainInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FEA332B2E1B63005E22F1 /* MainInput.swift */; };
+		F8A593422B8299CD009BEC9A /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A593412B8299CD009BEC9A /* RegistrationViewModel.swift */; };
+		F8A593462B82A368009BEC9A /* common.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A593452B82A368009BEC9A /* common.swift */; };
+		F8A593492B82A944009BEC9A /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A593482B82A944009BEC9A /* AuthorizationViewModel.swift */; };
 		F8D3F7FF2B66E64F0046F7AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +64,7 @@
 		F84AA9C82B81407A00F46B49 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		F8668A362B4DCF3600AD2884 /* ElementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementButton.swift; sourceTree = "<group>"; };
 		F8668A392B4DD5B100AD2884 /* programParametersData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = programParametersData.json; sourceTree = "<group>"; };
-		F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingProgramModel.swift; sourceTree = "<group>"; };
+		F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTrainingProgramViewModel.swift; sourceTree = "<group>"; };
 		F8668A422B4DE21600AD2884 /* Program.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Program.swift; sourceTree = "<group>"; };
 		F8668A452B4DEA4400AD2884 /* LevelTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTrainingView.swift; sourceTree = "<group>"; };
 		F8668A472B4DEB4C00AD2884 /* GoalTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTrainingView.swift; sourceTree = "<group>"; };
@@ -79,6 +82,9 @@
 		F87FEA232B2E083C005E22F1 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		F87FEA2E2B2E1ACD005E22F1 /* BackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		F87FEA332B2E1B63005E22F1 /* MainInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInput.swift; sourceTree = "<group>"; };
+		F8A593412B8299CD009BEC9A /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		F8A593452B82A368009BEC9A /* common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = common.swift; sourceTree = "<group>"; };
+		F8A593482B82A944009BEC9A /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +179,8 @@
 		F820CD0A2B6EE63B00C14BD7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F8A593472B82A91E009BEC9A /* Authorization */,
+				F8A593402B82998E009BEC9A /* Registration */,
 				F820CD0B2B6EE72700C14BD7 /* CreateTrainingProgram */,
 			);
 			path = ViewModels;
@@ -181,7 +189,7 @@
 		F820CD0B2B6EE72700C14BD7 /* CreateTrainingProgram */ = {
 			isa = PBXGroup;
 			children = (
-				F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift */,
+				F8668A3E2B4DDA5900AD2884 /* CreateTrainingProgramViewModel.swift */,
 			);
 			path = CreateTrainingProgram;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 		F83BB0012B2F68F500EB53C1 /* Utiles */ = {
 			isa = PBXGroup;
 			children = (
+				F8A593452B82A368009BEC9A /* common.swift */,
 				F83BB0022B2F692100EB53C1 /* String+Ext.swift */,
 				F828EFB02B4AE786000531C0 /* RoundedShape.swift */,
 				F84AA9C82B81407A00F46B49 /* Color+Ext.swift */,
@@ -350,6 +359,22 @@
 			path = Inputs;
 			sourceTree = "<group>";
 		};
+		F8A593402B82998E009BEC9A /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				F8A593412B8299CD009BEC9A /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		F8A593472B82A91E009BEC9A /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				F8A593482B82A944009BEC9A /* AuthorizationViewModel.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
 		F8D951D02B6FACD90068CF4F /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,10 +468,12 @@
 				F87FEA342B2E1B63005E22F1 /* MainInput.swift in Sources */,
 				F87C36BF2B4C14CB00716DCA /* MaskScreenView.swift in Sources */,
 				F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */,
+				F8A593492B82A944009BEC9A /* AuthorizationViewModel.swift in Sources */,
 				F807BDCA2B5DA4A800F78996 /* CodeInput.swift in Sources */,
 				F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */,
 				F8668A4C2B4DEBD800AD2884 /* DurationTrainingView.swift in Sources */,
 				F8668A482B4DEB4C00AD2884 /* GoalTrainingView.swift in Sources */,
+				F8A593462B82A368009BEC9A /* common.swift in Sources */,
 				F828EFB12B4AE786000531C0 /* RoundedShape.swift in Sources */,
 				F82B77F42B1FA9B6004E249F /* OnboardingView.swift in Sources */,
 				F83BB0082B2F7A2300EB53C1 /* VerificationCodeView.swift in Sources */,
@@ -458,9 +485,10 @@
 				F8668A4E2B4DF2F300AD2884 /* LabelButton.swift in Sources */,
 				F8668A372B4DCF3600AD2884 /* ElementButton.swift in Sources */,
 				F87FEA252B2E083C005E22F1 /* AuthorizationView.swift in Sources */,
+				F8A593422B8299CD009BEC9A /* RegistrationViewModel.swift in Sources */,
 				F82B77F22B1FA9B6004E249F /* AppMain.swift in Sources */,
 				F87FEA262B2E083C005E22F1 /* PrivacyPolicyView.swift in Sources */,
-				F8668A3F2B4DDA5900AD2884 /* CreateTrainingProgramModel.swift in Sources */,
+				F8668A3F2B4DDA5900AD2884 /* CreateTrainingProgramViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
