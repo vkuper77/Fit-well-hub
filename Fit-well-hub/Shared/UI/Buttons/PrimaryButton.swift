@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PrimaryButton: View {
     let title: String
+    let loading: Bool
     var body: some View {
         VStack{
             ZStack {
@@ -17,9 +18,13 @@ struct PrimaryButton: View {
                     startPoint: UnitPoint(x: 0, y: 0),
                     endPoint: UnitPoint(x: 1, y: 1)
                 )
-                Text(title)
-                    .font(.custom("MontserratAlternates-SemiBold", size: 16))
-                    .foregroundColor(.white)
+                if loading {
+                    ProgressView().tint(Color.white)
+                } else {
+                    Text(title)
+                        .font(.custom("MontserratAlternates-SemiBold", size: 16))
+                        .foregroundColor(.white)
+                }
             }
         }
         .frame(height: 60)
@@ -29,5 +34,5 @@ struct PrimaryButton: View {
 }
 
 #Preview {
-    PrimaryButton(title: "Title")
+    PrimaryButton(title: "Title", loading: false)
 }

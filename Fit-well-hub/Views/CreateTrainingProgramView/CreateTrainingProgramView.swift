@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CreateTrainingProgramView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var app: AppViewModel
+    
     @StateObject var viewModel = CreateTrainingProgramViewModel()
     
     var body: some View {
@@ -59,7 +61,7 @@ struct CreateTrainingProgramView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     if viewModel.index == 3 {
-                        viewModel.isLinkActiveRegistrationScreen = true
+                        app.isFirstRunApp = false
                         return
                     }
                     
@@ -76,9 +78,6 @@ struct CreateTrainingProgramView: View {
             }
         }
         
-        NavigationLink(destination: RegistrationView(), isActive: $viewModel.isLinkActiveRegistrationScreen) {
-            EmptyView()
-        }
     }
 }
 

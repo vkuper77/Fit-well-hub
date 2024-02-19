@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AuthorizationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var app: AppViewModel
+    
     @StateObject var viewModel = AuthorizationViewModel()
     
     var body: some View {
@@ -73,11 +75,10 @@ struct AuthorizationView: View {
                 Spacer().frame(height: 24)
                 
                 Button {
-                    viewModel.submit()
+                    app.isAuth = viewModel.submit()
                 } label: {
-                    PrimaryButton(title: "Войти")
-                        .opacity(!viewModel.isButtonEnabled ? 0.4 : 1)
-                }.disabled(!viewModel.isButtonEnabled)
+                    PrimaryButton(title: "Войти", loading: false)
+                }
                 
                 Spacer().frame(height: 16)
                 

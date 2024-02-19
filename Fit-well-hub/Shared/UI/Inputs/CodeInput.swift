@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct CodeInput: View {
+    let callback: (String) -> Void
     let numberOfFiled: Int
     @State var value: [String]
     @State private var oldValue = ""
     @FocusState private var fieldFocus: Int?
     
-    init(numberOfFiled: Int) {
+    init(numberOfFiled: Int, callback: @escaping (String) -> Void) {
         self.numberOfFiled = numberOfFiled
         self.value = Array(repeating: "", count: numberOfFiled)
+        self.callback = callback
     }
     
     var body: some View {
@@ -35,6 +37,7 @@ struct CodeInput: View {
                         .keyboardType(.numberPad)
                         .focused($fieldFocus, equals: index)
                         .tag(index)
+                        .onSubmit { callback(value.joined()) }
                         .onChange(of: value[index]) { newValue in
                             if value[index].count > 1 {
                                 let currentValue = Array(value[index])
@@ -47,6 +50,7 @@ struct CodeInput: View {
                             }
                             if !newValue.isEmpty {
                                 if (index == numberOfFiled - 1) {
+                                    callback(value.joined())
                                     fieldFocus = nil
                                 } else {
                                     fieldFocus = (fieldFocus ?? 0) + 1
@@ -58,7 +62,6 @@ struct CodeInput: View {
                     Rectangle()
                         .fill(Color.secondaryOrange)
                         .frame(width: 56, height: 1)
-                        
                 }
             }
         }
@@ -66,5 +69,5 @@ struct CodeInput: View {
 }
 
 #Preview {
-    CodeInput(numberOfFiled: 4)
+    CodeInput(numberOfFiled: 4, callback: { value in })
 }

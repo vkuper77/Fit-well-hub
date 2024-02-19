@@ -19,13 +19,18 @@ final class AuthorizationViewModel: ObservableObject {
     @Published var isError: Bool = false
     @Published var isErrorEmail: Bool = false
     
-    func submit () {
+    func submit () -> Bool {
         guard login.isValidEmail else {
             isErrorEmail = true
-            return
+            return false
         }
         
-        isError = login != "test@test.com" && password != "111"
+        guard login == "test@test.com" && password == "111" else {
+            isError = true
+            return false
+        }
+        
+        return true
     }
     
     var isButtonEnabled: Bool {

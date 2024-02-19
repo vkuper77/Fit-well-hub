@@ -61,7 +61,7 @@ struct PasswordRecoveryView: View {
                 Button {
                     submit()
                 } label: {
-                    PrimaryButton(title: "Получить код")
+                    PrimaryButton(title: "Получить код", loading: false)
                         .opacity(!isButtonEnabled ? 0.5 : 1)
                 }
                 .disabled(!isButtonEnabled)

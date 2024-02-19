@@ -76,7 +76,7 @@ struct CreatePasswordView: View {
                 Button {
                     submit()
                 } label: {
-                    PrimaryButton(title: "Подтвердить")
+                    PrimaryButton(title: "Подтвердить", loading: false)
                         .opacity(!isButtonEnabled ? 0.5 : 1)
                 }
                 

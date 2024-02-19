@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F807BDCA2B5DA4A800F78996 /* CodeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = F807BDC92B5DA4A800F78996 /* CodeInput.swift */; };
+		F81F72A42B83E8BF000E07F1 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81F72A32B83E8BF000E07F1 /* AppViewModel.swift */; };
+		F81F72A62B83EFF2000E07F1 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81F72A52B83EFF2000E07F1 /* MainTabView.swift */; };
 		F828EFB12B4AE786000531C0 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = F828EFB02B4AE786000531C0 /* RoundedShape.swift */; };
 		F82B77F22B1FA9B6004E249F /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B77F12B1FA9B6004E249F /* AppMain.swift */; };
 		F82B77F42B1FA9B6004E249F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82B77F32B1FA9B6004E249F /* OnboardingView.swift */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		F807BDC92B5DA4A800F78996 /* CodeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInput.swift; sourceTree = "<group>"; };
+		F81F72A32B83E8BF000E07F1 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		F81F72A52B83EFF2000E07F1 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		F828EFB02B4AE786000531C0 /* RoundedShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		F82B77EE2B1FA9B6004E249F /* Fit-well-hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fit-well-hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F82B77F12B1FA9B6004E249F /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
@@ -99,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F81F72A22B83E88B000E07F1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F81F72A32B83E8BF000E07F1 /* AppViewModel.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		F820CD012B6EE2C600C14BD7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +191,7 @@
 		F820CD0A2B6EE63B00C14BD7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F81F72A22B83E88B000E07F1 /* App */,
 				F8A593472B82A91E009BEC9A /* Authorization */,
 				F8A593402B82998E009BEC9A /* Registration */,
 				F820CD0B2B6EE72700C14BD7 /* CreateTrainingProgram */,
@@ -326,6 +339,7 @@
 				F820CD062B6EE3FD00C14BD7 /* PasswordRecovery */,
 				F820CD032B6EE37800C14BD7 /* PrivacyPolicy */,
 				F83BB0042B2F6AA600EB53C1 /* RootView.swift */,
+				F81F72A52B83EFF2000E07F1 /* MainTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -463,6 +477,7 @@
 				F83BB0032B2F692100EB53C1 /* String+Ext.swift in Sources */,
 				F8D3F7FF2B66E64F0046F7AA /* ContentView.swift in Sources */,
 				F87C36DA2B4C4A1500716DCA /* CreateTrainingProgramView.swift in Sources */,
+				F81F72A62B83EFF2000E07F1 /* MainTabView.swift in Sources */,
 				F8668A432B4DE21600AD2884 /* Program.swift in Sources */,
 				F83BAFFD2B2F34CC00EB53C1 /* SecureInput.swift in Sources */,
 				F87FEA342B2E1B63005E22F1 /* MainInput.swift in Sources */,
@@ -484,6 +499,7 @@
 				F84AA9C92B81407A00F46B49 /* Color+Ext.swift in Sources */,
 				F8668A4E2B4DF2F300AD2884 /* LabelButton.swift in Sources */,
 				F8668A372B4DCF3600AD2884 /* ElementButton.swift in Sources */,
+				F81F72A42B83E8BF000E07F1 /* AppViewModel.swift in Sources */,
 				F87FEA252B2E083C005E22F1 /* AuthorizationView.swift in Sources */,
 				F8A593422B8299CD009BEC9A /* RegistrationViewModel.swift in Sources */,
 				F82B77F22B1FA9B6004E249F /* AppMain.swift in Sources */,

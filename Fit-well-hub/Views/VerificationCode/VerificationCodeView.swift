@@ -9,12 +9,11 @@ import SwiftUI
 
 struct VerificationCodeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var app: AppViewModel
     
-    @State private var code: String = ""
-    @State private var isLinkActive: Bool = false
-    
-    func submit() {
-        isLinkActive = true
+    func submit(value: String) {
+        guard value.count == 4 else { return }
+        app.isAuth = true
     }
     
     var body: some View {
@@ -36,7 +35,7 @@ struct VerificationCodeView: View {
                 Spacer().frame(height: 34)
             }, bottomComponent: VStack {               
                 Spacer().frame(height: 62)
-                CodeInput(numberOfFiled: 4)
+                CodeInput(numberOfFiled: 4, callback: submit)
                 Spacer()
                 Text("Запросить код \(Text("еще раз.").underline(true, color: Color.secondaryOrange))")
                     .font(.custom("MontserratAlternates-Regular", size: 16))
@@ -51,10 +50,6 @@ struct VerificationCodeView: View {
                     BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: .secondaryOrange
                     )
                 }
-            }
-            
-            NavigationLink(destination: CreatePasswordView(), isActive: $isLinkActive) {
-                EmptyView()
             }
         }
     }

@@ -43,7 +43,7 @@ struct FooterContent: View {
                 NavigationLink {
                     CreateTrainingProgramView()
                 } label: {
-                    PrimaryButton(title: "Начать")
+                    PrimaryButton(title: "Начать", loading: false)
                 }
                 
             }.padding(.top, 51)

@@ -80,7 +80,7 @@ struct RegistrationView: View {
                 Button {
                     viewModel.submit()
                 } label: {
-                    PrimaryButton(title: "Зарегистрироваться")
+                    PrimaryButton(title: "Зарегистрироваться", loading: false)
                         .opacity(!viewModel.isButtonEnabled ? 0.5 : 1)
                 }.disabled(!viewModel.isButtonEnabled)
                 
@@ -152,12 +152,13 @@ struct RegistrationView: View {
             .padding(.top, 13)
             .padding(.bottom, 8)
             .navigationBarBackButtonHidden(true)
-        }
-        NavigationLink(destination: VerificationCodeView(), isActive: $viewModel.isLinkActiveCodeScreen) {
-            EmptyView()
-        }
-        NavigationLink(destination: AuthorizationView(), isActive: $viewModel.isLinkAuthorizationScreen) {
-            EmptyView()
+            
+            NavigationLink(destination: AuthorizationView(), isActive: $viewModel.isLinkAuthorizationScreen) {
+                EmptyView()
+            }
+            NavigationLink(destination: VerificationCodeView(), isActive: $viewModel.isLinkActiveCodeScreen) {
+                EmptyView()
+            }
         }
     }
 }

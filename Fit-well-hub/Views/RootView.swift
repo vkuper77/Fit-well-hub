@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct RootView: View {
+    @EnvironmentObject var app: AppViewModel
+        
     var body: some View {
-        OnboardingView()
+        if app.isFirstRunApp && !app.isAuth {
+            OnboardingView()
+        } else if !app.isFirstRunApp && !app.isAuth {
+            RegistrationView()
+        } else if app.isAuth {
+            MainTabView()
+        }
+        
     }
 }
 
