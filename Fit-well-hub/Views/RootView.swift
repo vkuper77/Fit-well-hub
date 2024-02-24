@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RootView: View {
     @EnvironmentObject var app: AppViewModel
-        
     var body: some View {
         if app.isFirstRunApp && !app.isAuth {
             OnboardingView()

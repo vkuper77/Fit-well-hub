@@ -156,7 +156,7 @@ struct RegistrationView: View {
             NavigationLink(destination: AuthorizationView(), isActive: $viewModel.isLinkAuthorizationScreen) {
                 EmptyView()
             }
-            NavigationLink(destination: VerificationCodeView(), isActive: $viewModel.isLinkActiveCodeScreen) {
+            NavigationLink(destination: VerificationCodeView(title: "Подтверждение\nрегистрации", typeSubmit: "registration"), isActive: $viewModel.isLinkActiveCodeScreen) {
                 EmptyView()
             }
         }

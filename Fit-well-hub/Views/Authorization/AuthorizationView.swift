@@ -148,7 +148,7 @@ struct AuthorizationView: View {
             NavigationLink(destination: RegistrationView(), isActive: $viewModel.isLinkRegistrationScreen) {
                 EmptyView()
             }
-            NavigationLink(destination: CreatePasswordView(), isActive: $viewModel.isLinkCreatePasswordScreen) {
+            NavigationLink(destination: PasswordRecoveryView(), isActive: $viewModel.isLinkCreatePasswordScreen) {
                 EmptyView()
             }
         }

@@ -81,14 +81,10 @@ struct CreatePasswordView: View {
                 }
                 
                 Spacer()
-            }.padding(.horizontal, 16))
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: .secondaryOrange
-                    )
-                }
             }
+                .padding(.horizontal, 16))
+                .navigationBarBackButtonHidden(true)
+            
             NavigationLink(destination: AuthorizationView(), isActive: $isLinkActive) {
                 EmptyView()
             }

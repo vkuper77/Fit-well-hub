@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PasswordRecoveryView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @State var email: String = ""
     @State var isErrorEmail: Bool = false
     @State var isLinkActive: Bool = false
@@ -75,7 +76,7 @@ struct PasswordRecoveryView: View {
                     )
                 }
             }
-            NavigationLink(destination: VerificationCodeView(), isActive: $isLinkActive) {
+            NavigationLink(destination: VerificationCodeView(title: "Восстановление пароля", typeSubmit: "recovery-pass"), isActive: $isLinkActive) {
                 EmptyView()
             }
         }
