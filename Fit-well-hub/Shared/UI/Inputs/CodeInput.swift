@@ -10,14 +10,16 @@ import SwiftUI
 struct CodeInput: View {
     let callback: (String) -> Void
     let numberOfFiled: Int
+    var isError: Bool
     @State var value: [String]
     @State private var oldValue = ""
     @FocusState private var fieldFocus: Int?
     
-    init(numberOfFiled: Int, callback: @escaping (String) -> Void) {
+    init(numberOfFiled: Int, isError: Bool, callback: @escaping (String) -> Void) {
         self.numberOfFiled = numberOfFiled
         self.value = Array(repeating: "", count: numberOfFiled)
         self.callback = callback
+        self.isError = isError
     }
     
     var body: some View {
@@ -60,7 +62,7 @@ struct CodeInput: View {
                             }
                         }
                     Rectangle()
-                        .fill(Color.secondaryOrange)
+                        .fill(isError ? Color.error : Color.secondaryOrange)
                         .frame(width: 56, height: 1)
                 }
             }
@@ -69,5 +71,5 @@ struct CodeInput: View {
 }
 
 #Preview {
-    CodeInput(numberOfFiled: 4, callback: { value in })
+    CodeInput(numberOfFiled: 4, isError: false, callback: { value in })
 }

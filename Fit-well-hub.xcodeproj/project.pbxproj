@@ -51,6 +51,7 @@
 		F8B8B0902B8B5950005A8B48 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B8B08F2B8B5950005A8B48 /* User.swift */; };
 		F8B8B0932B8B86CB005A8B48 /* Instance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B8B0922B8B86CB005A8B48 /* Instance.swift */; };
 		F8B8B0962B8BA96B005A8B48 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B8B0952B8BA96B005A8B48 /* Authentication.swift */; };
+		F8B8B0982B8BB5F3005A8B48 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B8B0972B8BB5F3005A8B48 /* CodeViewModel.swift */; };
 		F8D3F7FF2B66E64F0046F7AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		F8B8B08F2B8B5950005A8B48 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		F8B8B0922B8B86CB005A8B48 /* Instance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instance.swift; sourceTree = "<group>"; };
 		F8B8B0952B8BA96B005A8B48 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		F8B8B0972B8BB5F3005A8B48 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
 		F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				F8216B4B2B8A741500A141EC /* TimerViewModel.swift */,
+				F8B8B0972B8BB5F3005A8B48 /* CodeViewModel.swift */,
 			);
 			path = CodeView;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				F83BB0052B2F6AA600EB53C1 /* RootView.swift in Sources */,
 				F8A593492B82A944009BEC9A /* AuthorizationViewModel.swift in Sources */,
 				F807BDCA2B5DA4A800F78996 /* CodeInput.swift in Sources */,
+				F8B8B0982B8BB5F3005A8B48 /* CodeViewModel.swift in Sources */,
 				F87FE9FF2B2E06A1005E22F1 /* PrimaryButton.swift in Sources */,
 				F8668A4C2B4DEBD800AD2884 /* DurationTrainingView.swift in Sources */,
 				F8668A482B4DEB4C00AD2884 /* GoalTrainingView.swift in Sources */,

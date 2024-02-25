@@ -17,7 +17,9 @@ final class AppViewModel: ObservableObject {
     }
     
     private func initApp() -> Void {
-        
+        let isHasToken = ((UserDefaults.standard.string(forKey: KeysLocalStorage.accessToken.rawValue)) != nil)
+        isAuth = isHasToken
+        isFirstRunApp = !isHasToken
     }
 }
 

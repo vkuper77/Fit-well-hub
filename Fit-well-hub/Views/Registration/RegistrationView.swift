@@ -35,7 +35,7 @@ struct RegistrationView: View {
                                 .multilineTextAlignment(.leading)
                                 .font(.custom("MontserratAlternates-Regular", size: 12))
                                 .foregroundColor(.primaryError)
-                                Spacer()
+                            Spacer()
                         }.padding(.top, 4)
                     }
                     if !viewModel.errorMessage.isEmpty {
@@ -74,7 +74,7 @@ struct RegistrationView: View {
                             .multilineTextAlignment(.leading)
                             .font(.custom("MontserratAlternates-Regular", size: 12))
                             .foregroundColor(.primaryError)
-                            Spacer()
+                        Spacer()
                     }
                 }
                 
@@ -150,7 +150,7 @@ struct RegistrationView: View {
                             .frame(width: 20, height: 20)
                     }
                 }
-
+                
             }
             .padding(.top, 13)
             .padding(.bottom, 8)
@@ -159,7 +159,8 @@ struct RegistrationView: View {
             NavigationLink(destination: AuthorizationView(), isActive: $viewModel.isLinkAuthorizationScreen) {
                 EmptyView()
             }
-            NavigationLink(destination: VerificationCodeView(title: "Подтверждение\nрегистрации", typeSubmit: "registration"), isActive: $viewModel.isLinkActiveCodeScreen) {
+            
+            NavigationLink(destination: VerificationCodeView(title: "Подтверждение\nрегистрации", email: viewModel.email, typeSubmit: "registration"), isActive: $viewModel.isLinkActiveCodeScreen) {
                 EmptyView()
             }
         }

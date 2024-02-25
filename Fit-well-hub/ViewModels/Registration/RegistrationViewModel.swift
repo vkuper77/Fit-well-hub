@@ -53,7 +53,7 @@ import SwiftUI
             
             do {
                 let requestBody = ["email": email, "password": pass]
-                let (responseData) = try await Authentication.register(requestBody: requestBody)
+                let (responseData) = try await Authentication.registerUsser(requestBody: requestBody)
                 self.isLinkActiveCodeScreen = true
                 
                 let decoder = JSONDecoder()
@@ -61,18 +61,11 @@ import SwiftUI
                 print(data)
             } catch {
                 switch error {
-                    case FetchError.customError(let message):
-                        if let jsonData = message.data(using: .utf8),
-                           let json = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any],
-                           let errorMessage = json["message"] as? String {
-                            self.errorMessage = errorMessage
-                            print("Custom error occurred: \(errorMessage)")
-                        } else {
-                            print("Custom error occurred: \(message)")
-                        }
-                    default:
-                        print("An unknown error occurred")
-                    }
+                case FetchError.customError(let message):
+                    self.errorMessage = parseErrorMessage(message: message)
+                default:
+                    print("An unknown error occurred")
+                }
             }
             
             self.isLoading = false

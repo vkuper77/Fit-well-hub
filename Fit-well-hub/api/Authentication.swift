@@ -9,11 +9,11 @@ import Foundation
 
 
 class Authentication {
-    static func register(requestBody: [String: String]) async throws -> Data {
+    static func registerUsser(requestBody: [String: String]) async throws -> Data {
         try await instance.post(route: "/registration", body: requestBody)
     }
     
-    static func activate(requestBody: [String: String]) async throws -> Data {
+    static func activateUser(requestBody: [String: String]) async throws -> Data {
         try await instance.post(route: "/activate", body: requestBody)
     }
     

@@ -35,7 +35,7 @@ final class TimerViewModel: ObservableObject {
             isStarted = false
             hour = 0
             minutes = 0
-            seconds = 0
+            seconds = 59
         }
         totalSeconds = 0
         staticTotalSeconds = 0

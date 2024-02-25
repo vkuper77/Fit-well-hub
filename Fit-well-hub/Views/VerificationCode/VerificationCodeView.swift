@@ -11,21 +11,35 @@ struct VerificationCodeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var app: AppViewModel
     @StateObject var timer = TimerViewModel()
+    @StateObject var viewModelCode = CodeViewModel()
+    
     @State var isActiveLinkCreatePassword = false
     
     let title: String
+    let email: String
     let typeSubmit: String
     
     func submit(value: String) {
         guard value.count == 4 else { return }
-        
-        switch typeSubmit {
-        case "registration":
-            app.isAuth = true
-        case "recovery-pass":
-            isActiveLinkCreatePassword = true
-        default:
-            return
+        Task {
+            do {
+                try await viewModelCode.activateCode(code: value)
+                app.isAuth = true
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func resendCode() {
+        Task{
+            do {
+                timer.startTimer()
+                try await viewModelCode.resendCode()
+            } catch {
+                timer.stopTimer()
+                print(error)
+            }
         }
     }
     
@@ -42,26 +56,35 @@ struct VerificationCodeView: View {
                     .font(.custom("MontserratAlternates-Regular", size: 16))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
-                Text("r.sanchez1992gmail.com")
+                Text(email)
                     .font(.custom("MontserratAlternates-Semibold", size: 16))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 Spacer().frame(height: 34)
             }, bottomComponent: VStack {
                 Spacer().frame(height: 62)
-                CodeInput(numberOfFiled: 4, callback: submit)
+                CodeInput(numberOfFiled: 4, isError: !viewModelCode.errorMessage.isEmpty, callback: submit)
+                if !viewModelCode.errorMessage.isEmpty {
+                    Text(viewModelCode.errorMessage)
+                        .multilineTextAlignment(.center)
+                        .font(.custom("MontserratAlternates-Regular", size: 12))
+                        .foregroundColor(.primaryError)
+                        .padding(.top, 4)
+                }
                 Spacer()
                 Text("Запросить код \(timer.isStarted ? Text(timer.timerStringValue) : Text("еще раз.").underline(true, color: Color.secondaryOrange))")
                     .font(.custom("MontserratAlternates-Regular", size: 16))
                     .foregroundColor(.secondaryOrange)
-                    .onTapGesture { timer.startTimer() }
+                    .onTapGesture { resendCode()}
                     .disabled(timer.isStarted)
             })
             .navigationBarBackButtonHidden(true)
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: .secondaryOrange
-                    )
+               if typeSubmit == "recovery-pass" {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        BackButton(action: { presentationMode.wrappedValue.dismiss() }, colorPrimary: .white, colorSecondary: .secondaryOrange
+                        )
+                    }
                 }
             }
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
@@ -75,5 +98,5 @@ struct VerificationCodeView: View {
 }
 
 #Preview {
-    VerificationCodeView(title: "", typeSubmit: "")
+    VerificationCodeView(title: "", email: "test", typeSubmit: "")
 }

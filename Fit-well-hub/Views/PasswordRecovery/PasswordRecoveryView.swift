@@ -76,7 +76,7 @@ struct PasswordRecoveryView: View {
                     )
                 }
             }
-            NavigationLink(destination: VerificationCodeView(title: "Восстановление пароля", typeSubmit: "recovery-pass"), isActive: $isLinkActive) {
+            NavigationLink(destination: VerificationCodeView(title: "Восстановление пароля", email: email, typeSubmit: "recovery-pass"), isActive: $isLinkActive) {
                 EmptyView()
             }
         }
