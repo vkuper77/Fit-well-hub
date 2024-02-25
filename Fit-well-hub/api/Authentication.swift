@@ -24,4 +24,8 @@ class Authentication {
     static func login(requestBody: [String: String]) async throws -> Data {
         try await instance.post(route: "/login", body: requestBody)
     }
+    
+    static func logout() async throws -> Data {
+        try await instance.post(route: "/logout", body: nil)
+    }
 }

@@ -13,6 +13,17 @@ struct AuthorizationView: View {
     
     @StateObject var viewModel = AuthorizationViewModel()
     
+    func submit () {
+        Task {
+            do {
+               try await viewModel.submit()
+                app.isAuth = true
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             MaskScreenView(topComponent: VStack {
@@ -30,7 +41,7 @@ struct AuthorizationView: View {
                 Spacer().frame(height: 62)
                 
                 VStack(spacing: 4) {
-                    MainInput(value: $viewModel.login, placeholder: "Введите email...", label: "Email", isError: viewModel.isErrorEmail || viewModel.isError)
+                    MainInput(value: $viewModel.login, placeholder: "Введите email...", label: "Email", isError: viewModel.isErrorEmail || !viewModel.errorMessage.isEmpty)
                     if viewModel.isErrorEmail {
                         HStack {
                             Text("Неправильный формат электронной почты.")
@@ -42,20 +53,21 @@ struct AuthorizationView: View {
                     }
                 }.onChange(of: viewModel.login ) {
                     viewModel.isErrorEmail = false
-                    viewModel.isError = false
+                    viewModel.errorMessage = ""
                 }
                 
                 Spacer().frame(height: 16)
                 
                 VStack(spacing: 8) {
-                    SecureInput(value: $viewModel.password, isShowValue: $viewModel.isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: viewModel.isError)
+                    SecureInput(value: $viewModel.password, isShowValue: $viewModel.isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true, isError: !viewModel.errorMessage.isEmpty)
                     HStack(spacing: .none) {
-                        if viewModel.isError {
+                        if !viewModel.errorMessage.isEmpty {
                             HStack {
-                                Text("Неправильный логин или пароль.")
+                                Text(viewModel.errorMessage)
                                     .multilineTextAlignment(.leading)
                                     .font(.custom("MontserratAlternates-Regular", size: 12))
                                     .foregroundColor(.primaryError)
+                                    .fixedSize(horizontal: false, vertical: true)
                                 Spacer()
                             }
                         }
@@ -69,15 +81,15 @@ struct AuthorizationView: View {
                         }
                     }
                 }.onChange(of: viewModel.password ) {
-                    viewModel.isError = false
+                    viewModel.errorMessage = ""
                 }
                 
                 Spacer().frame(height: 24)
                 
                 Button {
-                    app.isAuth = viewModel.submit()
+                    submit()
                 } label: {
-                    PrimaryButton(title: "Войти", loading: false)
+                    PrimaryButton(title: "Войти", loading: viewModel.isLoading)
                 }
                 
                 Spacer().frame(height: 16)

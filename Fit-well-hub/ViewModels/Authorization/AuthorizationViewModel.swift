@@ -7,33 +7,44 @@
 
 import SwiftUI
 
-final class AuthorizationViewModel: ObservableObject {
+@MainActor class AuthorizationViewModel: ObservableObject {
     @Published var isLinkRegistrationScreen: Bool = false
     @Published var isLinkCreatePasswordScreen: Bool = false
     
     @Published var login: String = ""
     @Published var password: String = ""
     
+    @Published var isLoading: Bool = false
     @Published var isShowPass: Bool = false
 
-    @Published var isError: Bool = false
+    @Published var errorMessage: String = ""
     @Published var isErrorEmail: Bool = false
     
-    func submit () -> Bool {
+    func submit () async throws -> Void {
         guard login.isValidEmail else {
             isErrorEmail = true
-            return false
+            return
         }
         
-        guard login == "test@test.com" && password == "111" else {
-            isError = true
-            return false
+        isLoading = true
+        do {
+            let requestBody = ["email": login, "password": password]
+            try await Authentication.login(requestBody: requestBody)
+            isLoading = false
+        }catch {
+            isLoading = false
+            switch error {
+            case FetchError.customError(let message):
+                self.errorMessage = parseErrorMessage(message: message)
+            default:
+                print("An unknown error occurred")
+            }
+            throw error
         }
         
-        return true
     }
     
     var isButtonEnabled: Bool {
-        login.count > 0 && password.count > 0 && !isError && !isErrorEmail
+        login.count > 0 && password.count > 0 && errorMessage.isEmpty && !isErrorEmail
     }
 }
