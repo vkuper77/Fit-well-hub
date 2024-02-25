@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-final class RegistrationViewModel: ObservableObject {
+@MainActor final class RegistrationViewModel: ObservableObject {
     @Published var isLinkActiveCodeScreen: Bool = false
     @Published var isLinkAuthorizationScreen: Bool = false
     
@@ -16,28 +16,28 @@ final class RegistrationViewModel: ObservableObject {
     @Published var repeatPass: String = ""
     
     @Published var isShowPass: Bool = false
+    @Published var isLoading: Bool = false
     
-    @Published var isErrorUserExist: Bool = false
+    @Published var errorMessage: String = ""
     @Published var isErrorEmail: Bool = false
     @Published var isErrorPass: Bool = false
     
     var isButtonEnabled: Bool {
-           return !pass.isEmpty
+        return !pass.isEmpty
         && !repeatPass.isEmpty
         && !email.isEmpty
-        && !isErrorUserExist
+        && errorMessage.isEmpty
         && !isErrorEmail
         && !isErrorPass
     }
     
     func clear () {
-        isErrorUserExist = false
+        errorMessage = ""
         isErrorEmail = false
         email = ""
     }
     
     func submit () {
-        
         guard email.isValidEmail else {
             isErrorEmail = true
             return
@@ -48,6 +48,34 @@ final class RegistrationViewModel: ObservableObject {
             return
         }
         
-        isLinkActiveCodeScreen = true
+        Task {
+            self.isLoading = true
+            
+            do {
+                let requestBody = ["email": email, "password": pass]
+                let (responseData) = try await Authentication.register(requestBody: requestBody)
+                self.isLinkActiveCodeScreen = true
+                
+                let decoder = JSONDecoder()
+                let data = try decoder.decode(UserResponse.self, from: responseData)
+                print(data)
+            } catch {
+                switch error {
+                    case FetchError.customError(let message):
+                        if let jsonData = message.data(using: .utf8),
+                           let json = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any],
+                           let errorMessage = json["message"] as? String {
+                            self.errorMessage = errorMessage
+                            print("Custom error occurred: \(errorMessage)")
+                        } else {
+                            print("Custom error occurred: \(message)")
+                        }
+                    default:
+                        print("An unknown error occurred")
+                    }
+            }
+            
+            self.isLoading = false
+        }
     }
 }

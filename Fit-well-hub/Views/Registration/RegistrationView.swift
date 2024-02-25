@@ -28,30 +28,33 @@ struct RegistrationView: View {
                 Spacer().frame(height: 62)
                 
                 VStack {
-                    MainInput(value: $viewModel.email, placeholder: "Введите email...", label: "Email", isError: viewModel.isErrorEmail || viewModel.isErrorUserExist)
+                    MainInput(value: $viewModel.email, placeholder: "Введите email...", label: "Email", isError: viewModel.isErrorEmail || !viewModel.errorMessage.isEmpty)
                     if viewModel.isErrorEmail {
-                        Spacer().frame(height: 4)
                         HStack {
                             Text("Неправильный формат электронной почты.")
                                 .multilineTextAlignment(.leading)
                                 .font(.custom("MontserratAlternates-Regular", size: 12))
                                 .foregroundColor(.primaryError)
                                 Spacer()
-                        }
+                        }.padding(.top, 4)
                     }
-                    if viewModel.isErrorUserExist {
-                        Spacer().frame(height: 4)
+                    if !viewModel.errorMessage.isEmpty {
                         HStack {
-                            NavigationLink(destination: AuthorizationView()) {
-                                Text("Аккаунт с данным email уже существует")
-                                    .multilineTextAlignment(.leading)
-                                    .font(.custom("MontserratAlternates-Regular", size: 12))
-                                    .foregroundColor(.primaryError)
-                            }
+                            Text(viewModel.errorMessage)
+                                .multilineTextAlignment(.leading)
+                                .font(.custom("MontserratAlternates-Regular", size: 12))
+                                .foregroundColor(.primaryError)
+                                .fixedSize(horizontal: false, vertical: true)
                             Spacer()
-                        }
+                        }.padding(.top, 4)
                     }
-                }.onChange(of: viewModel.email ) { viewModel.isErrorEmail = false }
+                }.onChange(of: viewModel.email ) {
+                    viewModel.isErrorEmail = false
+                    viewModel.errorMessage = ""
+                }.onChange(of: viewModel.pass ) {
+                    viewModel.isErrorEmail = false
+                    viewModel.errorMessage = ""
+                }
                 
                 Spacer().frame(height: 16)
                 
@@ -80,7 +83,7 @@ struct RegistrationView: View {
                 Button {
                     viewModel.submit()
                 } label: {
-                    PrimaryButton(title: "Зарегистрироваться", loading: false)
+                    PrimaryButton(title: "Зарегистрироваться", loading: viewModel.isLoading)
                         .opacity(!viewModel.isButtonEnabled ? 0.5 : 1)
                 }.disabled(!viewModel.isButtonEnabled)
                 
