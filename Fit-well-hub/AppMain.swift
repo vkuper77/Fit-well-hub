@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
-struct Fit_well_hubApp: App {
+struct AppMain: App {
+    @StateObject var app = AppViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(app)
         }
     }
 }
