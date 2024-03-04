@@ -27,9 +27,41 @@ import Foundation
         }
     }
     
-    func resendCode() async throws -> Void {
+    func sendCodeRegistration() async throws -> Void {
         do {
-            try await Authentication.sendCode()
+            try await Authentication.sendCodeRegistration()
+        } catch {
+            switch error {
+            case FetchError.customError(let message):
+                self.errorMessage = parseErrorMessage(message: message)
+                removeErrorMessageAfterDelay()
+            default:
+                print("An unknown error occurred")
+            }
+            throw error
+        }
+    }
+    
+    func sendCode(email: String) async throws -> Void {
+        do {
+            let requestBody = ["email": email]
+            try await Authentication.sendCode(requestBody: requestBody)
+        } catch {
+            switch error {
+            case FetchError.customError(let message):
+                self.errorMessage = parseErrorMessage(message: message)
+                removeErrorMessageAfterDelay()
+            default:
+                print("An unknown error occurred")
+            }
+            throw error
+        }
+    }
+    
+    func validateCode(email: String, code: String) async throws -> Void {
+        do {
+            let requestBody = ["email": email, "code": code]
+            try await Authentication.validateCode(requestBody: requestBody)
         } catch {
             switch error {
             case FetchError.customError(let message):

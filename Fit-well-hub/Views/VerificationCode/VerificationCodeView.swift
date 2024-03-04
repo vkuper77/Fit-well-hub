@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+enum TypeSubmit: String {
+    case RecoveryPassword = "recovery-password"
+}
+
 struct VerificationCodeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var app: AppViewModel
@@ -18,30 +22,6 @@ struct VerificationCodeView: View {
     let title: String
     let email: String
     let typeSubmit: String
-    
-    func submit(value: String) {
-        guard value.count == 4 else { return }
-        Task {
-            do {
-                try await viewModelCode.activateCode(code: value)
-                app.isAuth = true
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
-    func resendCode() {
-        Task{
-            do {
-                timer.startTimer()
-                try await viewModelCode.resendCode()
-            } catch {
-                timer.stopTimer()
-                print(error)
-            }
-        }
-    }
     
     var body: some View {
         NavigationStack {
@@ -75,7 +55,7 @@ struct VerificationCodeView: View {
                 Text("Запросить код \(timer.isStarted ? Text(timer.timerStringValue) : Text("еще раз.").underline(true, color: Color.secondaryOrange))")
                     .font(.custom("MontserratAlternates-Regular", size: 16))
                     .foregroundColor(.secondaryOrange)
-                    .onTapGesture { resendCode()}
+                    .onTapGesture { sendCodeRegistration()}
                     .disabled(timer.isStarted)
             })
             .navigationBarBackButtonHidden(true)
@@ -92,6 +72,39 @@ struct VerificationCodeView: View {
             }
             NavigationLink(destination: CreatePasswordView(), isActive: $isActiveLinkCreatePassword) {
                 EmptyView()
+            }
+        }
+    }
+    
+    func submit(value: String) {
+        guard value.count == 4 else { return }
+        Task {
+            do {
+                if(typeSubmit == TypeSubmit.RecoveryPassword.rawValue) {
+                    try await viewModelCode.validateCode(email: email, code: value)
+                    isActiveLinkCreatePassword = true
+                } else {
+                    try await viewModelCode.activateCode(code: value)
+                    app.isAuth = true
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func sendCodeRegistration() {
+        Task{
+            do {
+                timer.startTimer()
+                if(typeSubmit == TypeSubmit.RecoveryPassword.rawValue) {
+                    try await viewModelCode.sendCode(email: email)
+                } else {
+                    try await viewModelCode.sendCodeRegistration()
+                }
+            } catch {
+                timer.stopTimer()
+                print(error)
             }
         }
     }

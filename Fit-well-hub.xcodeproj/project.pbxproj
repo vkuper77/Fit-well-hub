@@ -53,6 +53,7 @@
 		F8B8B0962B8BA96B005A8B48 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B8B0952B8BA96B005A8B48 /* Authentication.swift */; };
 		F8B8B0982B8BB5F3005A8B48 /* CodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B8B0972B8BB5F3005A8B48 /* CodeViewModel.swift */; };
 		F8D3F7FF2B66E64F0046F7AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */; };
+		F8DB12502B9667F7004FED3F /* PasswordRecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DB124F2B9667F7004FED3F /* PasswordRecoveryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		F8B8B0952B8BA96B005A8B48 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		F8B8B0972B8BB5F3005A8B48 /* CodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeViewModel.swift; sourceTree = "<group>"; };
 		F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F8DB124F2B9667F7004FED3F /* PasswordRecoveryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 		F820CD0A2B6EE63B00C14BD7 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F8DB124C2B966776004FED3F /* PasswordRecoveryView */,
 				F8216B4A2B8A73C900A141EC /* CodeView */,
 				F81F72A22B83E88B000E07F1 /* App */,
 				F8A593472B82A91E009BEC9A /* Authorization */,
@@ -435,6 +438,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		F8DB124C2B966776004FED3F /* PasswordRecoveryView */ = {
+			isa = PBXGroup;
+			children = (
+				F8DB124F2B9667F7004FED3F /* PasswordRecoveryViewModel.swift */,
+			);
+			path = PasswordRecoveryView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -514,6 +525,7 @@
 				F83BB0032B2F692100EB53C1 /* String+Ext.swift in Sources */,
 				F8D3F7FF2B66E64F0046F7AA /* ContentView.swift in Sources */,
 				F87C36DA2B4C4A1500716DCA /* CreateTrainingProgramView.swift in Sources */,
+				F8DB12502B9667F7004FED3F /* PasswordRecoveryViewModel.swift in Sources */,
 				F81F72A62B83EFF2000E07F1 /* MainTabView.swift in Sources */,
 				F8668A432B4DE21600AD2884 /* Program.swift in Sources */,
 				F83BAFFD2B2F34CC00EB53C1 /* SecureInput.swift in Sources */,
