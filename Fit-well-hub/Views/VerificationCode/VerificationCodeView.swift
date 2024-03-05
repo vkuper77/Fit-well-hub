@@ -70,7 +70,7 @@ struct VerificationCodeView: View {
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
                 if timer.isStarted { timer.updateTimer() }
             }
-            NavigationLink(destination: CreatePasswordView(), isActive: $isActiveLinkCreatePassword) {
+            NavigationLink(destination: CreatePasswordView(email: email), isActive: $isActiveLinkCreatePassword) {
                 EmptyView()
             }
         }

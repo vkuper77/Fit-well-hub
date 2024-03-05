@@ -48,7 +48,7 @@ struct PasswordRecoveryView: View {
                     PrimaryButton(title: "Получить код", loading: viewModel.isLoading)
                         .opacity(!viewModel.isButtonEnabled ? 0.5 : 1)
                 }
-                .disabled(!viewModel.isButtonEnabled)
+                .disabled(!viewModel.isButtonEnabled || viewModel.isLoading)
                 
                 Spacer()
             }.padding(.horizontal, 16))

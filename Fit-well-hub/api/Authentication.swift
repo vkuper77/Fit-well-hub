@@ -29,6 +29,10 @@ class Authentication {
         try await instance.post(route: "/sendCode", body: requestBody)
     }
     
+    static func changePassword(requestBody: [String: String]) async throws -> Data {
+        try await instance.post(route: "/changePassword", body: requestBody)
+    }
+    
     static func login(requestBody: [String: String]) async throws -> Data {
         try await instance.post(route: "/login", body: requestBody)
     }
