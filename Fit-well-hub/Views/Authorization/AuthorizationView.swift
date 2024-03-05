@@ -13,17 +13,6 @@ struct AuthorizationView: View {
     
     @StateObject var viewModel = AuthorizationViewModel()
     
-    func submit () {
-        Task {
-            do {
-               try await viewModel.submit()
-                app.isAuth = true
-            } catch {
-                print(error)
-            }
-        }
-    }
-    
     var body: some View {
         NavigationStack {
             MaskScreenView(topComponent: VStack {
@@ -90,7 +79,7 @@ struct AuthorizationView: View {
                     submit()
                 } label: {
                     PrimaryButton(title: "Войти", loading: viewModel.isLoading)
-                }
+                }.disabled(!viewModel.isButtonEnabled || viewModel.isLoading)
                 
                 Spacer().frame(height: 16)
                 
@@ -162,6 +151,17 @@ struct AuthorizationView: View {
             }
             NavigationLink(destination: PasswordRecoveryView(), isActive: $viewModel.isLinkCreatePasswordScreen) {
                 EmptyView()
+            }
+        }
+    }
+    
+    func submit () {
+        Task {
+            do {
+               try await viewModel.submit()
+                app.isAuth = true
+            } catch {
+                print(error)
             }
         }
     }

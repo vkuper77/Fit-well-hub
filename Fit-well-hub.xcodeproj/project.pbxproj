@@ -55,6 +55,10 @@
 		F8D3F7FF2B66E64F0046F7AA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */; };
 		F8DB12502B9667F7004FED3F /* PasswordRecoveryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DB124F2B9667F7004FED3F /* PasswordRecoveryViewModel.swift */; };
 		F8F74C5B2B97A91A00BEDF13 /* CreatePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F74C5A2B97A91A00BEDF13 /* CreatePasswordViewModel.swift */; };
+		F8F74C5D2B97B91800BEDF13 /* RegistrationTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F74C5C2B97B91800BEDF13 /* RegistrationTopView.swift */; };
+		F8F74C5F2B97BAE000BEDF13 /* RegistrationAccountErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F74C5E2B97BADF00BEDF13 /* RegistrationAccountErrorView.swift */; };
+		F8F74C632B97BBE500BEDF13 /* ExistingAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F74C622B97BBE500BEDF13 /* ExistingAccountView.swift */; };
+		F8F74C652B97BD7B00BEDF13 /* SocialLoginButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F74C642B97BD7B00BEDF13 /* SocialLoginButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +112,10 @@
 		F8D3F7FE2B66E64F0046F7AA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F8DB124F2B9667F7004FED3F /* PasswordRecoveryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewModel.swift; sourceTree = "<group>"; };
 		F8F74C5A2B97A91A00BEDF13 /* CreatePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewModel.swift; sourceTree = "<group>"; };
+		F8F74C5C2B97B91800BEDF13 /* RegistrationTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTopView.swift; sourceTree = "<group>"; };
+		F8F74C5E2B97BADF00BEDF13 /* RegistrationAccountErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAccountErrorView.swift; sourceTree = "<group>"; };
+		F8F74C622B97BBE500BEDF13 /* ExistingAccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExistingAccountView.swift; sourceTree = "<group>"; };
+		F8F74C642B97BD7B00BEDF13 /* SocialLoginButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +165,10 @@
 		F820CD042B6EE39200C14BD7 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				F8F74C622B97BBE500BEDF13 /* ExistingAccountView.swift */,
 				F87FEA212B2E083C005E22F1 /* RegistrationView.swift */,
+				F8F74C5E2B97BADF00BEDF13 /* RegistrationAccountErrorView.swift */,
+				F8F74C5C2B97B91800BEDF13 /* RegistrationTopView.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -390,6 +401,7 @@
 		F884FC372B2DFFE3008697BB /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				F8F74C642B97BD7B00BEDF13 /* SocialLoginButtons.swift */,
 				F87FEA2E2B2E1ACD005E22F1 /* BackButton.swift */,
 				F87FE9FD2B2E06A1005E22F1 /* PrimaryButton.swift */,
 			);
@@ -556,18 +568,22 @@
 				F82B77F42B1FA9B6004E249F /* OnboardingView.swift in Sources */,
 				F83BB0082B2F7A2300EB53C1 /* VerificationCodeView.swift in Sources */,
 				F87FEA242B2E083C005E22F1 /* RegistrationView.swift in Sources */,
+				F8F74C5D2B97B91800BEDF13 /* RegistrationTopView.swift in Sources */,
 				F8F74C5B2B97A91A00BEDF13 /* CreatePasswordViewModel.swift in Sources */,
 				F87FEA302B2E1ACD005E22F1 /* BackButton.swift in Sources */,
 				F8B8B0902B8B5950005A8B48 /* User.swift in Sources */,
 				F83BB00A2B2F872E00EB53C1 /* CreatePasswordView.swift in Sources */,
+				F8F74C632B97BBE500BEDF13 /* ExistingAccountView.swift in Sources */,
 				F8216B4C2B8A741500A141EC /* TimerViewModel.swift in Sources */,
 				F83BB0002B2F682B00EB53C1 /* PasswordRecoveryView.swift in Sources */,
 				F84AA9C92B81407A00F46B49 /* Color+Ext.swift in Sources */,
 				F8B8B0932B8B86CB005A8B48 /* Instance.swift in Sources */,
 				F8668A4E2B4DF2F300AD2884 /* LabelButton.swift in Sources */,
+				F8F74C652B97BD7B00BEDF13 /* SocialLoginButtons.swift in Sources */,
 				F8668A372B4DCF3600AD2884 /* ElementButton.swift in Sources */,
 				F8B8B08E2B8B4FEC005A8B48 /* Config.swift in Sources */,
 				F81F72A42B83E8BF000E07F1 /* AppViewModel.swift in Sources */,
+				F8F74C5F2B97BAE000BEDF13 /* RegistrationAccountErrorView.swift in Sources */,
 				F87FEA252B2E083C005E22F1 /* AuthorizationView.swift in Sources */,
 				F8A593422B8299CD009BEC9A /* RegistrationViewModel.swift in Sources */,
 				F82B77F22B1FA9B6004E249F /* AppMain.swift in Sources */,
