@@ -9,29 +9,9 @@ import SwiftUI
 
 struct CreatePasswordView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var isLinkActive: Bool = false
+    @StateObject var viewModel = CreatePasswordViewModel()
     
-    @State var pass: String = ""
-    @State var repeatPass: String = ""
-    
-    @State var isShowPass: Bool = false
-    @State var isErrorPass: Bool = false
-    
-    var isButtonEnabled: Bool {
-           return !pass.isEmpty
-        && !repeatPass.isEmpty
-        && !isErrorPass
-    }
-    
-    func submit () {
-        
-        if pass != repeatPass {
-            isErrorPass = true
-        } else {
-            isLinkActive = true
-        }
-        
-    }
+    let email: String
     
     var body: some View {
         NavigationStack {
@@ -50,23 +30,24 @@ struct CreatePasswordView: View {
                 Spacer().frame(height: 62)
                 
                 VStack {
-                    SecureInput(value: $pass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true)
+                    SecureInput(value: $viewModel
+                        .password, isShowValue: $viewModel.isShowPass, label: "Пароль", placeholder: "Введите пароль...", isShowIcon: true)
                     Spacer().frame(height: 16)
-                    SecureInput(value: $repeatPass, isShowValue: $isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false)
-                }.onChange(of: repeatPass) {
-                    isErrorPass = false
-                }.onChange(of: pass) {
-                    isErrorPass = false
+                    SecureInput(value: $viewModel.repeatPassword, isShowValue: $viewModel.isShowPass, label: "Пароль", placeholder: "Повторите пароль...", isShowIcon: false)
+                }.onChange(of: viewModel.repeatPassword) {
+                    viewModel.errorMessage = ""
+                }.onChange(of: viewModel.password) {
+                    viewModel.errorMessage = ""
                 }
                 
-                if isErrorPass {
+                if !viewModel.errorMessage.isEmpty {
                     Spacer().frame(height: 4)
                     HStack {
-                        Text("Пароли не совпадают")
+                        Text(viewModel.errorMessage)
                             .multilineTextAlignment(.leading)
                             .font(.custom("MontserratAlternates-Regular", size: 12))
                             .foregroundColor(.primaryError)
-                            Spacer()
+                        Spacer()
                     }
                     .padding(.leading, 16)
                 }
@@ -76,22 +57,29 @@ struct CreatePasswordView: View {
                 Button {
                     submit()
                 } label: {
-                    PrimaryButton(title: "Подтвердить", loading: false)
-                        .opacity(!isButtonEnabled ? 0.5 : 1)
+                    PrimaryButton(title: "Подтвердить", loading: viewModel.isLoading)
+                        .opacity(!viewModel.isButtonEnabled ? 0.5 : 1)
                 }
+                .disabled(!viewModel.isButtonEnabled || viewModel.isLoading)
                 
                 Spacer()
             }
                 .padding(.horizontal, 16))
-                .navigationBarBackButtonHidden(true)
+            .navigationBarBackButtonHidden(true)
             
-            NavigationLink(destination: AuthorizationView(), isActive: $isLinkActive) {
+            NavigationLink(destination: AuthorizationView(), isActive: $viewModel.isLinkActive) {
                 EmptyView()
             }
+        }
+    }
+    
+    func submit() {
+        Task {
+            try await viewModel.submit(email: email)
         }
     }
 }
 
 #Preview {
-    CreatePasswordView()
+    CreatePasswordView(email: "")
 }

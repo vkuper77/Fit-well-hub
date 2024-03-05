@@ -10,14 +10,23 @@ import SwiftUI
 struct RootView: View {
     @EnvironmentObject var app: AppViewModel
     var body: some View {
-        if app.isFirstRunApp && !app.isAuth {
-            OnboardingView()
-        } else if !app.isFirstRunApp && !app.isAuth {
-            RegistrationView()
-        } else if app.isAuth {
-            MainTabView()
+        Group {
+            if shouldShowOnboardingView {
+                OnboardingView()
+            } else if shouldShowRegistrationView {
+                RegistrationView()
+            } else if app.isAuth {
+                MainTabView()
+            }
         }
-        
+    }
+    
+    private var shouldShowOnboardingView: Bool {
+        return app.isFirstRunApp && !app.isAuth
+    }
+    
+    private var shouldShowRegistrationView: Bool {
+        return !app.isFirstRunApp && !app.isAuth
     }
 }
 

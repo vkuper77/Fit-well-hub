@@ -17,8 +17,20 @@ class Authentication {
         try await instance.post(route: "/activate", body: requestBody)
     }
     
-    static func sendCode() async throws -> Data {
-        try await instance.post(route: "/resendCode", body: nil)
+    static func validateCode(requestBody: [String: String]) async throws -> Data {
+        try await instance.post(route: "/validateCode", body: requestBody)
+    }
+    
+    static func sendCodeRegistration() async throws -> Data {
+        try await instance.post(route: "/registerCode", body: nil)
+    }
+    
+    static func sendCode(requestBody: [String: String]) async throws -> Data {
+        try await instance.post(route: "/sendCode", body: requestBody)
+    }
+    
+    static func changePassword(requestBody: [String: String]) async throws -> Data {
+        try await instance.post(route: "/changePassword", body: requestBody)
     }
     
     static func login(requestBody: [String: String]) async throws -> Data {

@@ -8,43 +8,42 @@
 import SwiftUI
 
 @MainActor class AuthorizationViewModel: ObservableObject {
-    @Published var isLinkRegistrationScreen: Bool = false
-    @Published var isLinkCreatePasswordScreen: Bool = false
-    
-    @Published var login: String = ""
-    @Published var password: String = ""
-    
-    @Published var isLoading: Bool = false
-    @Published var isShowPass: Bool = false
-
-    @Published var errorMessage: String = ""
-    @Published var isErrorEmail: Bool = false
-    
-    func submit () async throws -> Void {
-        guard login.isValidEmail else {
-            isErrorEmail = true
-            return
+    // MARK: - Published Properties
+        @Published var isLinkRegistrationScreen: Bool = false
+        @Published var isLinkCreatePasswordScreen: Bool = false
+        @Published var login: String = ""
+        @Published var password: String = ""
+        @Published var isLoading: Bool = false
+        @Published var isShowPass: Bool = false
+        @Published var errorMessage: String = ""
+        @Published var isErrorEmail: Bool = false
+        
+        // MARK: - Computed Properties
+        var isButtonEnabled: Bool {
+            return !login.isEmpty && !password.isEmpty && errorMessage.isEmpty && !isErrorEmail
         }
         
-        isLoading = true
-        do {
-            let requestBody = ["email": login, "password": password]
-            try await Authentication.login(requestBody: requestBody)
-            isLoading = false
-        }catch {
-            isLoading = false
-            switch error {
-            case FetchError.customError(let message):
-                self.errorMessage = parseErrorMessage(message: message)
-            default:
-                print("An unknown error occurred")
+        // MARK: - Methods
+        func submit() async throws {
+            guard login.isValidEmail else {
+                isErrorEmail = true
+                throw FetchError.customError("Неверный формат email")
             }
-            throw error
+            
+            isLoading = true
+            do {
+                let requestBody = ["email": login, "password": password]
+                try await Authentication.login(requestBody: requestBody)
+                isLoading = false
+            } catch {
+                isLoading = false
+                switch error {
+                case FetchError.customError(let message):
+                    self.errorMessage = parseErrorMessage(message: message)
+                default:
+                    print("Произошла неизвестная ошибка")
+                }
+                throw error
+            }
         }
-        
-    }
-    
-    var isButtonEnabled: Bool {
-        login.count > 0 && password.count > 0 && errorMessage.isEmpty && !isErrorEmail
-    }
 }
