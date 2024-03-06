@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-class AppViewModel: ObservableObject {
-    
+@MainActor class AppViewModel: ObservableObject {
     @Published var isFirstRunApp = true
     @Published var isAuth = false
     
@@ -23,8 +22,27 @@ class AppViewModel: ObservableObject {
             isFirstRunApp = true
             UserDefaults.standard.set(true, forKey: "hasAppRunBefore")
         }
-        let isHasToken = ((UserDefaults.standard.string(forKey: KeysLocalStorage.accessToken.rawValue)) != nil)
-        isAuth = isHasToken
+        
+        if UserDefaults.standard.bool(forKey: "isAuth") {
+            isAuth = false
+        } else {
+            isAuth = true
+            UserDefaults.standard.set(true, forKey: "isAuth")
+        }
+        
+//        let isHasToken = ((UserDefaults.standard.string(forKey: KeysLocalStorage.accessToken.rawValue)) != nil)
+//        isAuth = isHasToken
+        
+    }
+    
+    func logout() async throws -> Void {
+        do {
+            isAuth = false
+            UserDefaults.standard.removeObject(forKey: "isAuth")
+            try await Authentication.logout()
+        } catch {
+            print("Error logging out: \(error)")
+        }
     }
 }
 
