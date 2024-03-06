@@ -19,6 +19,11 @@ struct ResponseData: Decodable {
     let refreshToken: String?
 }
 
+//func clearTokens() {
+//    UserDefaults.standard.removeObject(forKey: KeysLocalStorage.accessToken.rawValue)
+//    UserDefaults.standard.removeObject(forKey: KeysLocalStorage.refreshToken.rawValue)
+//}
+
 class NetworkManager {
     private let baseUrl: String
     

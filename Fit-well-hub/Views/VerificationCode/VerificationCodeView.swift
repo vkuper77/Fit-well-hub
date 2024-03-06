@@ -70,7 +70,7 @@ struct VerificationCodeView: View {
             .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
                 if timer.isStarted { timer.updateTimer() }
             }
-            NavigationLink(destination: CreatePasswordView(email: email), isActive: $isActiveLinkCreatePassword) {
+            NavigationLink(destination: CreatePasswordView(), isActive: $isActiveLinkCreatePassword) {
                 EmptyView()
             }
         }
@@ -81,7 +81,7 @@ struct VerificationCodeView: View {
         Task {
             do {
                 if(typeSubmit == TypeSubmit.RecoveryPassword.rawValue) {
-                    try await viewModelCode.validateCode(email: email, code: value)
+                    try await viewModelCode.validateCode(code: value)
                     isActiveLinkCreatePassword = true
                 } else {
                     try await viewModelCode.activateCode(code: value)

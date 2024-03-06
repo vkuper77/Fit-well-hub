@@ -58,9 +58,9 @@ import Foundation
         }
     }
     
-    func validateCode(email: String, code: String) async throws -> Void {
+    func validateCode(code: String) async throws -> Void {
         do {
-            let requestBody = ["email": email, "code": code]
+            let requestBody = ["code": code]
             try await Authentication.validateCode(requestBody: requestBody)
         } catch {
             switch error {

@@ -24,7 +24,7 @@ import Foundation
         && errorMessage.isEmpty
     }
     
-    func submit (email: String) async throws -> Void {
+    func submit () async throws -> Void {
         guard password == repeatPassword else {
             errorMessage = "Пароль не совпадают"
             return
@@ -33,8 +33,9 @@ import Foundation
         isLoading = true
         
         do {
-            let requestBody = ["email": email, "password": password]
+            let requestBody = ["password": password]
             try await Authentication.changePassword(requestBody: requestBody)
+            
             isLinkActive = true
         } catch {
             switch error {

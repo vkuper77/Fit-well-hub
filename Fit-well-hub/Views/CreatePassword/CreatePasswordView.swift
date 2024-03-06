@@ -11,8 +11,6 @@ struct CreatePasswordView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @StateObject var viewModel = CreatePasswordViewModel()
     
-    let email: String
-    
     var body: some View {
         NavigationStack {
             MaskScreenView(topComponent: VStack {
@@ -75,11 +73,11 @@ struct CreatePasswordView: View {
     
     func submit() {
         Task {
-            try await viewModel.submit(email: email)
+            try await viewModel.submit()
         }
     }
 }
 
 #Preview {
-    CreatePasswordView(email: "")
+    CreatePasswordView()
 }
